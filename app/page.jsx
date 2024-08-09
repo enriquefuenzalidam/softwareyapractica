@@ -17,8 +17,8 @@ export default function Home() {
           </video>
         </div>
         <div className={`  absolute top-0 left-0 w-full h-full bg-fucsiaAzulRatioFondo opacity-100 `} />
-        <div className={` relative mx-auto max-w-7xl flex w-full h-full items-end justify-start p-4`}>
-          <h2 data-aos-once="true" data-aos='fade-right' className={`translate-y-[0.62rem] font-LexendDeca text-white text-opacity-100 max-w-5xl text-left w-full transition-all ease-in-out text-5xl md:text-6xl lg:text-7xl lg:my-0 `}><span className={`  font-thin `}>so</span><span className={`  font-extralight `} >ft</span><span className={`  font-light `} >wa</span><span className={`  font-semibold `} >re</span><span className={`  font-extrabold `} >ya</span></h2>
+        <div className={` relative mx-auto max-w-7xl flex w-full h-full items-end justify-start `}>
+          <h2 data-aos-once="true" data-aos='fade-right' className={` mx-8 -translate-y-[0.33rem] sm:-translate-y-[0.33rem] lg:-translate-y-[0.48rem] font-LexendDeca text-white text-opacity-100 text-left w-full text-5xl md:text-6xl lg:text-7xl `}><span className={`  font-thin `}>so</span><span className={`  font-extralight `} >ft</span><span className={`  font-light `} >wa</span><span className={`  font-semibold `} >re</span><span className={`  font-extrabold `} >ya</span></h2>
         </div>
       </section>
       <section className={` text-right text-lg p-4 `}>
