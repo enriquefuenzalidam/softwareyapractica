@@ -45,7 +45,7 @@ const ProductList = () => {
 
   return (
     <>
-      <h2 className={` text-center text-3xl font-bold`}>Softwares</h2>
+      <h2 className={` mx-12 text-left text-4xl uppercase font-semibold  text-neutral-400 font-RobotoCondensed `}>Todos los productos</h2>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
         {softwLista.map(softw => {
           // Find the item in the cart
@@ -53,13 +53,13 @@ const ProductList = () => {
           const quantity = cartItem ? cartItem.quantity : 0;
 
           return (
-            <li className={` flex flex-col rounded-sm p-4 bg-white shadow-sm shadow-neutral-400`} key={softw.id}>
-              <h3 className={` grow text-2xl font-bold mb-4`}>{softw.softNombr}</h3>
-              <p>Precio: $ {softw.softPrec}</p>
-              <p className={` mx-auto mt-4 w-28 grid grid-cols-3 font-bold text-lg rounded-sm overflow-hidden `}>
-                <span className={` cursor-pointer text-center text-white bg-neutral-500 hover:bg-black `}  onClick={() => addItem(softw)}>+</span>
-                <span className={` text-center border-2 border-solid border-neutral-500`}>{quantity}</span>
-                <span className={` cursor-pointer text-center text-white bg-neutral-500 hover:bg-black `} onClick={() => removeItem(softw.id)}>-</span>
+            <li className={` flex flex-col rounded-sm p-4 bg-white shadow-sm shadow-neutral-600`} key={softw.id}>
+              <h3 className={` text-neutral-600 grow text-xl md:text-2xl lg:text-3xl font-RobotoCondensed font-light mb-4`}>{softw.softNombr}</h3>
+              <p className={` text-lg font-medium `}>Precio: $ {softw.softPrec}</p>
+              <p className={` mt-4 w-28 grid grid-cols-3 font-bold text-md rounded-sm overflow-hidden `}>
+                <span className={` cursor-pointer text-center text-black bg-neutral-200 hover:bg-black hover:text-white `}  onClick={() => addItem(softw)}>+</span>
+                <span className={` text-center border-[1px] border-solid border-neutral-200`}>{quantity}</span>
+                <span className={` cursor-pointer text-center text-black bg-neutral-200 hover:bg-black hover:text-white`} onClick={() => removeItem(softw.id)}>-</span>
               </p>
             </li>
           );
