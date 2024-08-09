@@ -18,7 +18,7 @@ const Cart = () => {
       <ul>
         {items.map(item => (
           <li key={item.id}>
-            {item.name} - ${item.price} x {item.quantity}
+            {item.softNombr} - ${item.softPrec} x {item.quantity}
             <button onClick={() => removeItem(item.id)}>Remove</button>
           </li>
         ))}

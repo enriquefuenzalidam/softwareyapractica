@@ -55,7 +55,7 @@ const useCustomCart = () => {
     removeItem,
     isEmpty: items.length === 0,
     totalUniqueItems: items.length,
-    cartTotal: items.reduce((total, item) => total + item.price * item.quantity, 0),
+    cartTotal: items.reduce((total, item) => total + item.softPrec * item.quantity, 0),
     hydrated,
   };
 };
