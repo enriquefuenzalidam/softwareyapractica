@@ -12,7 +12,10 @@ module.exports = {
                 neutral: colors.neutral
             },
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans]
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                Roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
+                RobotoCondensed: ['Roboto Condensed', ...defaultTheme.fontFamily.sans],
+                Afacad: ['Afacad', ...defaultTheme.fontFamily.sans]
             }
         }
     },
