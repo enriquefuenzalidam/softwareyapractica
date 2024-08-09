@@ -9,9 +9,9 @@ export default function Home() {
   const { cartTotal, isEmpty } = useCartContext();
 
   return (
-    <main className={`  `}>
+    <main className={` max-w-6xl mx-auto `}>
       <section className={` text-right text-lg p-4 `}>
-        <span className={` border-solid border-black border-2 border-opacity-5 p-4 bg-white rounded-md shadow-md shadow-neutral-600 `} >{ isEmpty ? 'Vacío' : `Total: ${cartTotal} ` }</span>
+        <span className={` border-solid border-black border-2 border-opacity-5 rounded-sm p-4 bg-white shadow-md shadow-neutral-400 `} >{ isEmpty ? 'Vacío' : `Total: ${cartTotal} ` }</span>
       </section>
       <section>
         <ProductList />

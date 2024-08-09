@@ -53,9 +53,9 @@ const ProductList = () => {
           const quantity = cartItem ? cartItem.quantity : 0;
 
           return (
-            <li className={` flex flex-col border-solid border-black border-2 border-opacity-5 p-4 bg-white rounded-md shadow-md shadow-neutral-600 `} key={softw.id}>
+            <li className={` flex flex-col border-solid border-black border-2 border-opacity-5 rounded-sm p-4 bg-white shadow-md shadow-neutral-400 `} key={softw.id}>
               <h3 className={` grow text-2xl font-bold mb-4`}>{softw.softNombr}</h3>
-              <p >${softw.softPrec}</p>
+              <p>Precio: $ {softw.softPrec}</p>
               <p className={` mx-auto mt-4 w-28 grid grid-cols-3 font-bold text-lg rounded-md overflow-hidden `}>
                 <span className={` cursor-pointer text-center text-white bg-neutral-500 hover:bg-black `}  onClick={() => addItem(softw)}>+</span>
                 <span className={` text-center border-2 border-solid border-neutral-500`}>{quantity}</span>
