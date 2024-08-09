@@ -15,7 +15,7 @@ module.exports = {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
                 Roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
                 RobotoCondensed: ['Roboto Condensed', ...defaultTheme.fontFamily.sans],
-                Afacad: ['Afacad', ...defaultTheme.fontFamily.sans]
+                LexendDeca: ['Lexend Deca', ...defaultTheme.fontFamily.sans]
             }
         }
     },
