@@ -1,13 +1,11 @@
 'use client';
 
 import ProductList from '../components/ProductList';
-import Cart from '../components/Cart';
 import { useCartContext } from '../app/context/CartContext';
 
 
 export default function Home() {
   const { cartTotal, isEmpty } = useCartContext();
-
   return (
     <main className={` max-w-7xl mx-auto font-Roboto`}>
       <section className={` text-right text-lg p-4 `}>
