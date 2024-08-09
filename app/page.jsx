@@ -6,12 +6,12 @@ import { useCartContext } from '../app/context/CartContext';
 
 
 export default function Home() {
-  const { cartTotal } = useCartContext();
+  const { cartTotal, isEmpty } = useCartContext();
 
   return (
-    <main>
-      <section>
-      Total: ${cartTotal}
+    <main className={`  `}>
+      <section className={` text-right text-lg p-4 `}>
+        <span className={` border-solid border-black border-2 border-opacity-5 p-4 bg-white rounded-md shadow-md shadow-neutral-600 `} >{ isEmpty ? 'Vacío' : `Total: ${cartTotal} ` }</span>
       </section>
       <section>
         <ProductList />

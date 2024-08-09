@@ -45,7 +45,7 @@ const ProductList = () => {
 
   return (
     <>
-      <h2>Softwares</h2>
+      <h2 className={` text-center text-3xl font-bold`}>Softwares</h2>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-4">
         {softwLista.map(softw => {
           // Find the item in the cart
