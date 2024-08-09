@@ -6,7 +6,8 @@ module.exports = {
     theme: {
         extend: {
             backgroundImage: {
-                'fucsiaAzulRatioFondo': 'linear-gradient(162deg,rgba(0,0,0,0.6) ,rgba(255,255,255,0), rgba(0,255,255,1))',
+                'cabeceraVideoFondo': 'linear-gradient(162deg,rgba(0,0,0,0.6) ,rgba(255,255,255,0), #4351C6)',
+                'fucsiaAzulRatioFondo': 'linear-gradient(162deg, #4351C6, rgba(211, 0, 126, 0.3), rgba(0, 0, 0,0.5), rgb(18, 33, 77), #4351C6)',
             },
             colors: {
                 neutral: colors.neutral

@@ -52,13 +52,13 @@ const ProductList = () => {
           const quantity = cartItem ? cartItem.quantity : 0;
 
           return (
-            <li className={` flex flex-col rounded-sm p-4 bg-white shadow-sm shadow-neutral-600`} key={softw.id}>
+            <li className={` flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-neutral-600`} key={softw.id}>
               <h3 className={` text-neutral-600 grow text-xl md:text-2xl lg:text-3xl font-RobotoCondensed font-light mb-4`}>{softw.softNombr}</h3>
               <p className={` text-lg font-medium `}>Precio: $ {softw.softPrec}</p>
-              <p className={` mt-4 w-28 grid grid-cols-3 font-bold text-md rounded-sm overflow-hidden `}>
-                <span className={` cursor-pointer text-center text-black bg-neutral-200 hover:bg-black hover:text-white `}  onClick={() => addItem(softw)}>+</span>
-                <span className={` text-center border-[1px] border-solid border-neutral-200`}>{quantity}</span>
-                <span className={` cursor-pointer text-center text-black bg-neutral-200 hover:bg-black hover:text-white`} onClick={() => removeItem(softw.id)}>-</span>
+              <p className={` mt-4 w-28 grid grid-cols-3 font-bold text-md rounded-sm overflow-hidden bg-white bg-opacity-50 shadow-inner shadow-neutral-500 `}>
+                <span className={` cursor-pointer text-center text-black  hover:bg-black hover:text-white `}  onClick={() => addItem(softw)}>+</span>
+                <span className={` text-center  `}>{quantity}</span>
+                <span className={` cursor-pointer text-center text-black  hover:bg-black hover:text-white`} onClick={() => removeItem(softw.id)}>-</span>
               </p>
             </li>
           );
