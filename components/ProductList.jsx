@@ -45,8 +45,7 @@ const ProductList = () => {
 
   return (
     <>
-      <h2 className={` mx-12 text-left text-4xl uppercase font-semibold  text-neutral-400 font-RobotoCondensed `}>Todos los productos</h2>
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
         {softwLista.map(softw => {
           // Find the item in the cart
           const cartItem = items.find(item => item.id === softw.id);
