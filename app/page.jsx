@@ -4,15 +4,16 @@ import ProductList from '../components/ProductList';
 import { useCartContext } from '../app/context/CartContext';
 
 import portadaVideo from 'public/images/portadaFondoVideo.mp4';
+import shoppingCartIcon from 'public/images/cart-shopping.svg'
 
 
 export default function Home() {
   const { cartTotal, isEmpty } = useCartContext();
   return (
     <main className={` font-Roboto`}>
-      <section className={` h-[38vh] relative w-full bg-cover bg-center bg-black overflow-hidden  `} id={`inicio`}>
+      <section className={` h-[24vh] sm:h-[38vh] md:h-[50vh] lg:h-[62vh] relative w-full bg-cover bg-center bg-black overflow-hidden  `} id={`inicio`}>
         <div className={` absolute top-0 left-0 w-full h-full opacity-60`}>
-          <video poster='images/portadaFondoVideo.png' className='object-cover object-center h-full w-full' preload="auto" autoPlay="autoplay" muted loop playsInline>
+          <video  className='object-cover object-center h-full w-full' preload="auto" autoPlay="autoplay" muted loop playsInline>
             <source src={portadaVideo} type="video/mp4" />
           </video>
         </div>
@@ -22,15 +23,17 @@ export default function Home() {
           <h2 data-aos-once="true" data-aos='fade-right' className={` mx-8 -translate-y-[0.31rem] sm:-translate-y-[0.31rem] md:-translate-y-[0.39rem] lg:-translate-y-[0.47rem] font-LexendDeca text-opacity-100 text-left w-full text-5xl md:text-6xl lg:text-7xl `} style={{ textShadow: `0 0 0.1rem #000, 0 0 0.6rem #000` }}><span className={`  font-thin text-[#B99CD0]`}>so</span><span className={`  font-extralight text-[#9F8CCC] `} >ft</span><span className={`  font-light text-[#867AC8] `} >wa</span><span className={`  font-semibold text-[#746FC6] `} >re</span><span className={`  font-extrabold  text-[#6364C3] `} >ya</span></h2>
         </div>
       </section>
-      <section className={` relative p-3 sm:p-4 md:p-5 lg:p-6 `}>
+      <section className={` relative p-3 sm:p-4 md:p-5 lg:p-6  `}>
         <div className={` absolute inset-0 bg-fucsiaAzulRatioFondo opacity-80 `}></div>
-        <div className={` relative mx-auto max-w-5xl text-right pb-3 sm:pb-4 md:pb-5 lg:pb-6 `}>
-          <span className={` inline-block rounded-sm py-2 px-6  ${isEmpty ? `bg-sky-200` : `bg-[#faae3b]`} bg-opacity-40 shadow-inner shadow-neutral-700 font-medium uppercase font-RobotoCondensed text-lg lg:text-xl `} >
-            {isEmpty ? `Carro vacío` : `Total: $ ${cartTotal} `}
+        <div className={` absolute inset-0 `} style={{ backgroundImage: `url(images/noise.png)` }}></div>
+        <p className={` relative mx-auto max-w-5xl text-right pb-3 sm:pb-4 md:pb-5 lg:pb-6 `}>
+          
+          <span className={` overflow-hidden relative inline-block rounded-sm py-2 px-6  ${isEmpty ? `bg-sky-200` : `bg-[#faae3b]`} bg-opacity-40 shadow-inner shadow-neutral-700 uppercase font-medium font-Oswald text-black text-opacity-80 text-lg lg:text-xl `} >
+            <img className={` object-center object-contain w-6 lg:w-7 h-auto inline opacity-50 mr-3 `} src={shoppingCartIcon.src} width='28' height='auto' alt='' /> {isEmpty ? `Carro vacío` : `Total: $ ${new Intl.NumberFormat('es-CL').format(cartTotal)} `}
           </span>
-        </div>
+        </p>
         <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-30  ck `}>
-          <h2 className={` mx-auto mb-8  max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase font-semibold  text-[#42347d] text-opacity-100 font-RobotoCondensed `}>Encuentra el software que buscas</h2>
+          <h2 className={` mx-auto mb-8  max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase font-semibold  text-[#42347d] text-opacity-100 font-Oswald `}>Encuentra el software que buscas</h2>
           <ProductList />
         </div>
       </section>

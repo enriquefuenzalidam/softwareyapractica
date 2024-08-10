@@ -8,8 +8,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={` scroll-smooth `}>
+      <body className={` bg-[#6364C3] `}>
         <CartProvider>
           {children}
         </CartProvider>

@@ -53,8 +53,8 @@ const ProductList = () => {
 
           return (
             <li className={` flex flex-col rounded-sm p-4 bg-white bg-opacity-70 shadow-md shadow-neutral-600`} key={softw.id}>
-              <h3 className={` text-neutral-600 grow text-xl md:text-2xl lg:text-3xl font-RobotoCondensed font-semibold mb-4`}>{softw.softNombr}</h3>
-              <p className={` text-2xl font-light `}>Precio: $ {softw.softPrec}</p>
+              <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4`}>{softw.softNombr}</h3>
+              <p className={` text-2xl font-light  font-Oswald `}>Precio: $ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
               <p className={` mt-4 w-28 grid grid-cols-3 font-bold text-md rounded-sm overflow-hidden ${ quantity !== 0 ? `bg-[#faae3b] ` : `bg-white` }  bg-opacity-40 shadow-inner shadow-neutral-500 `}>
                 <span className={` cursor-pointer text-center text-black  hover:bg-black hover:text-white `}  onClick={() => addItem(softw)}>+</span>
                 <span className={` text-center  `}>{quantity}</span>
