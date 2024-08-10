@@ -7,7 +7,7 @@ module.exports = {
         extend: {
             backgroundImage: {
                 'cabeceraVideoFondo': 'linear-gradient(162deg,rgba(0,0,0,0.6) ,rgba(255,255,255,0), #636DC6)',
-                'fucsiaAzulRatioFondo': 'linear-gradient(162deg, #4351C6, rgba(211, 0, 126, 0.3), rgba(0, 0, 0,0.5), rgb(18, 33, 77), #000)',
+                'fucsiaAzulRatioFondo': 'linear-gradient(162deg, rgba(211, 0, 126, 0.3), rgba(0, 0, 0,0.5), #4351C6, rgb(18, 33, 77), #000)',
             },
             colors: {
                 neutral: colors.neutral
