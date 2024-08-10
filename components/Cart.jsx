@@ -1,4 +1,4 @@
-'use client';
+
 
 import { useCartContext } from '../app/context/CartContext';
 
