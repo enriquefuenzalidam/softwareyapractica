@@ -28,6 +28,7 @@ export default function Home() {
           <ProductList />
         </div>
       </section>
+
     </main>
   );
 }
