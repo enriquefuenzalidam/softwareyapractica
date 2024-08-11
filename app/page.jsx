@@ -18,9 +18,8 @@ export default function Home() {
       <div className={` absolute inset-0 bg-fucsiaAzulRatioFondo opacity-30 `}></div>
       <div className={` absolute inset-0 bg-cyan-100 bg-opacity-20 `}></div>
         <div className={` absolute inset-0 bg-repeat `} style={{ backgroundImage: `url(images/noise.png)` }}></div>
-        <p className={` relative mx-auto max-w-5xl text-right pb-3 sm:pb-4 md:pb-5 lg:pb-6 `}>
-          
-          <span className={` overflow-hidden relative inline-block rounded-sm py-2 px-6  bg-opacity-70 shadow-inner shadow-neutral-700 uppercase font-medium font-Oswald text-black ${isEmpty ? `text-opacity-30 bg-sky-100` : `text-opacity-80 bg-[#faae3b]`} text-lg lg:text-xl `} >
+        <p className={` block relative mx-auto max-w-5xl text-right mb-3 sm:mb-4 md:mb-5 lg:mb-6 `}>
+          <span className={` align-middle border-0 m-0 overflow-hidden relative inline-block rounded-sm py-2 px-6  bg-opacity-70 shadow-inner shadow-neutral-700 uppercase font-medium font-Oswald text-black ${isEmpty ? `text-opacity-30 bg-sky-100` : `text-opacity-80 bg-[#faae3b]`} text-lg lg:text-xl `} >
             <img className={` object-center object-contain w-6 lg:w-7 h-auto inline ${isEmpty ? `opacity-30` : `opacity-60`} mr-3 `} src={shoppingCartIcon.src} width='28' height='auto' alt='' /> {isEmpty ? `Carro vacío` : `Total: $ ${new Intl.NumberFormat('es-CL').format(cartTotal)} `}
           </span>
         </p>
