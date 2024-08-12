@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const FondoCabecera = ({ portada }) => {
     return (
-        <section className={` min-h-20 ${portada? `h-[24vh] sm:h-[38vh] lg:h-[50vh]`:` h-[24vh] `}  relative w-full bg-cover bg-center bg-black overflow-hidden  `} id={`inicio`}>
+        <section className={` min-h-20 ${portada? `h-[24vh] sm:h-[38vh] lg:h-[50vh] max-h-96 `:` h-[24vh] `}  relative w-full bg-cover bg-center bg-black overflow-hidden  `} id={`inicio`}>
             <div className={` absolute top-0 left-0 w-full h-full opacity-60 `}>
                 <video className={` object-cover ${portada? `object-left-top`:`object-center `} h-full w-full `} preload="auto" autoPlay="autoplay" muted loop playsInline>
                     <source src={portadaVideo} type="video/mp4" />

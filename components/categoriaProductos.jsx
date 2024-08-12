@@ -26,17 +26,14 @@ const CategoriaProductos = ({ categoryId }) => {
               <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal `}>
                 <Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`}>{softw.softNombr}</Link>
               </h3>
-              <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight mt-4  `}>Categorías</h4>
+              <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight mt-4  `}>Categoría{softw.softCategs.length>1&&`s`}:</h4>
               <p className={` text-md md:text-lg lg:text-xl font-Oswald text-black text-opacity-80 `} >
                 {softw.softCategs.map((categId, index) => {
                   const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
                   const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
                   return (
-                    <Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>
-                      {categoryName}{index < softw.softCategs.length - 1 && ", "}
-                    </Link>
-                  );
-                })}
+                    <><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{ softw.softCategs.length !== 1 && (index < softw.softCategs.length-1 && (  index < softw.softCategs.length-2 ? `, `: ` y `))}</>);}
+                  )}.
               </p>
               <p className={` text-2xl font-light  font-Oswald mt-4 `}>Precio: $ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
               {quantity !== 0 && (

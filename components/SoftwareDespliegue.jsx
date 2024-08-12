@@ -35,17 +35,14 @@ const PodructoDespliegue = ({ productId }) => {
           {softw.softNombr}
         </h3>
         <h4 className="text-black text-opacity-80 text-xl sm:text-2xl lg:text-3xl font-Oswald font-extralight mt-4">
-          Categorías:</h4>
+          Categoría{softw.softCategs.length>1&&`s`}:</h4>
         <p className="text-lg md:text-xl lg:text-2xl grow font-Oswald text-black text-opacity-80 mt-2">
           {softw.softCategs.map((categId, index) => {
             const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
             const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
             return (
-              <Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>
-                {categoryName}{index < softw.softCategs.length - 1 && ", "}
-              </Link>
-            );
-          })}
+              <><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{ softw.softCategs.length !== 1 && (index < softw.softCategs.length-1 && (  index < softw.softCategs.length-2 ? `, `: ` y `))}</>);}
+            )}.
         </p>
         <p className={` text-2xl font-light font-Oswald mt-8 `}>
           Precio: $ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}

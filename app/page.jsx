@@ -10,13 +10,10 @@ import shoppingCartIcon from 'public/images/cart-shopping.svg'
 export default function Home() {
   const { cartTotal, isEmpty } = useCartContext();
   return (
-    <main className={` font-Roboto `}>
-      <FondoCabecera portada={true}/>
+    <main className={` relative font-Roboto `}>
+      <FondoCabecera portada={true} />
 
       <section className={` relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 pt-3 sm:pt-4 md:pt-5 lg:pt-6 px-3 sm:px-4 md:px-5 lg:px-6 `}>
-
-        <div className={` absolute inset-0 bg-metalicoGlassFondoB `}></div>
-        <div className={` absolute inset-0 bg-repeat `} style={{ backgroundImage: `url(images/noise.png)` }}></div>
 
         <p className={` block relative mx-auto max-w-5xl text-right mb-3 sm:mb-4 md:mb-5 lg:mb-6 `}>
           <span className={` align-middle border-0 m-0 overflow-hidden relative inline-block rounded-sm py-2 px-6  bg-opacity-70 shadow-inner shadow-neutral-700 uppercase font-medium font-Oswald text-black ${isEmpty ? `text-opacity-30 bg-sky-100` : `text-opacity-80 bg-[#faae3b]`} text-lg lg:text-xl `} >
