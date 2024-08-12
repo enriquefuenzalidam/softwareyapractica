@@ -3,9 +3,9 @@
 import { useSearchParams } from 'next/navigation';
 import { useCartContext } from '../context/CartContext';
 
-import FondoCabecera from 'components/FondoCabecera';
-import SoftwareDespliegue from 'components/SoftwareDespliegue';
-import softwLista from 'data/softwLista.json';
+import FondoCabecera from '/components/FondoCabecera';
+import SoftwareDespliegue from '/components/SoftwareDespliegue';
+import softwLista from '/data/softwLista.json';
 
 import shoppingCartIcon from 'public/images/cart-shopping.svg';
 
