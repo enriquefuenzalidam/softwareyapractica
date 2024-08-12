@@ -7,6 +7,7 @@ import FondoCabecera from '/components/fondoCabecera';
 
 import shoppingCartIcon from 'public/images/cart-shopping.svg'
 import categNombrs from 'data/categNombrs.json';
+import SuspenseWrapper from '/components/SuspenseWrapper';
 
 
 const SoftwareCategoria = () => {
@@ -20,7 +21,7 @@ const SoftwareCategoria = () => {
 
   const category = categNombrs.find(categ => categ.id === numericCatgoriaId);
   const categoryName = category ? category.catgNombr : 'Categoría desconocida';
-
+{/*
   if (!numericCatgoriaId || !category) {
     return (
       <main className={` font-Roboto `}>
@@ -33,7 +34,9 @@ const SoftwareCategoria = () => {
       </main>
     );
   }
+  */}
   return (
+    <SuspenseWrapper>
     <main className={` font-Roboto `}>
       <FondoCabecera portada={false} />
       <section className={` relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 pt-3 sm:pt-4 md:pt-5 lg:pt-6 px-3 sm:px-4 md:px-5 lg:px-6 `}>
@@ -50,6 +53,7 @@ const SoftwareCategoria = () => {
       </section>
 
     </main>
+    </SuspenseWrapper>
   );
 };
 

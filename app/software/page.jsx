@@ -8,6 +8,7 @@ import SoftwareDespliegue from '/components/SoftwareDespliegue';
 import softwLista from '/data/softwLista.json';
 
 import shoppingCartIcon from 'public/images/cart-shopping.svg';
+import SuspenseWrapper from '/components/SuspenseWrapper';
 
 const ProductPage = () => {
   const { cartTotal, isEmpty } = useCartContext();
@@ -19,7 +20,7 @@ const ProductPage = () => {
   const numericProductId = Number.isInteger(Number(productId)) ? parseInt(productId, 10) : null;
 
   const softWareId = softwLista.find(soft => soft.id === numericProductId);
-
+{/*
   if (!numericProductId || !softWareId) {
     return (
       <main className={` font-Roboto `}>
@@ -32,7 +33,9 @@ const ProductPage = () => {
       </main>
     );
   }
+*/}
   return (
+    <SuspenseWrapper>
     <main className="font-Roboto">
       <FondoCabecera portada={false} />
       <section className="relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 pt-3 sm:pt-4 md:pt-5 lg:pt-6 px-3 sm:px-4 md:px-5 lg:px-6">
@@ -49,6 +52,7 @@ const ProductPage = () => {
         </div>
       </section>
     </main>
+    </SuspenseWrapper>
   );
 };
 
