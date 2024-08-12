@@ -1,41 +1,16 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import { useCartContext } from '../context/CartContext';
-
 import FondoCabecera from '/components/fondoCabecera';
-import SoftwareDespliegue from '/components/SoftwareDespliegue';
-import softwLista from '/data/softwLista.json';
+import SoftwareProduct from '/components/SoftwareProduct';
 
 import shoppingCartIcon from 'public/images/cart-shopping.svg';
-import SuspenseWrapper from '/components/SuspenseWrapper';
 
-const ProductPage = () => {
+const SoftwarePage = () => {
   const { cartTotal, isEmpty } = useCartContext();
 
-  const searchParams = useSearchParams();
-  const productId = searchParams.get('productId'); // Get productId from search parameters
-
-  // Check if the productId is a valid integer string
-  const numericProductId = Number.isInteger(Number(productId)) ? parseInt(productId, 10) : null;
-
-  const softWareId = softwLista.find(soft => soft.id === numericProductId);
-{/*
-  if (!numericProductId || !softWareId) {
-    return (
-      <main className={` font-Roboto `}>
-        <FondoCabecera portada={false} />
-        <section className={` relative p-12 sm:p-16 md:p-20 lg:p-24 px-3 sm:px-4 md:px-5 lg:px-6 `}>
-          <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40  `}>
-            <h2 className={` mx-auto my-8  max-w-7xl text-center text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}><span className={`  font-light `}>El producto buscado no existe</span></h2>
-          </div>
-        </section>
-      </main>
-    );
-  }
-*/}
   return (
-    <SuspenseWrapper>
     <main className="font-Roboto">
       <FondoCabecera portada={false} />
       <section className="relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 pt-3 sm:pt-4 md:pt-5 lg:pt-6 px-3 sm:px-4 md:px-5 lg:px-6">
@@ -46,14 +21,13 @@ const ProductPage = () => {
           </span>
         </p>
         <div className="relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40">
-          <div className={` flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `}>
-            <SoftwareDespliegue productId={numericProductId} />
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <SoftwareProduct />
+          </Suspense>
         </div>
       </section>
     </main>
-    </SuspenseWrapper>
   );
 };
 
-export default ProductPage;
+export default SoftwarePage;
