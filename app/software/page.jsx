@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useCartContext } from '../context/CartContext';
 
-import FondoCabecera from '/components/FondoCabecera';
+import FondoCabecera from '/components/fondoCabecera';
 import SoftwareDespliegue from '/components/SoftwareDespliegue';
 import softwLista from '/data/softwLista.json';
 
