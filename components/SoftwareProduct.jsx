@@ -21,7 +21,11 @@ const SoftwareProduct = () => {
     );
   }
 
-  return <SoftwareDespliegue productId={numericProductId} />;
+  return (
+    <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40 `}>
+      <SoftwareDespliegue productId={numericProductId} />
+    </div>
+  );
 };
 
 export default SoftwareProduct;

@@ -20,11 +20,9 @@ const SoftwarePage = () => {
             {isEmpty ? `Carro vacío` : `Total: $ ${new Intl.NumberFormat('es-CL').format(cartTotal)}`}
           </span>
         </p>
-        <div className="relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40">
-          <Suspense fallback={<div>Loading...</div>}>
-            <SoftwareProduct />
-          </Suspense>
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SoftwareProduct />
+        </Suspense>
       </section>
     </main>
   );
