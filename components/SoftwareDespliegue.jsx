@@ -1,6 +1,7 @@
 import { useCartContext } from '../app/context/CartContext';
 import softwLista from 'data/softwLista.json';
 import categNombrs from 'data/categNombrs.json';
+import Link from 'next/link';
 
 import tempSoftImg from 'public/images/tempSoftImg.jpg'
 
@@ -38,10 +39,11 @@ const PodructoDespliegue = ({ productId }) => {
         <p className="text-lg md:text-xl lg:text-2xl grow font-Oswald text-black text-opacity-80 mt-2">
           {softw.softCategs.map((categId, index) => {
             const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
+            const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
             return (
-              <span key={index}>
+              <Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>
                 {categoryName}{index < softw.softCategs.length - 1 && ", "}
-              </span>
+              </Link>
             );
           })}
         </p>

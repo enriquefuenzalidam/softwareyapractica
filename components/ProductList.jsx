@@ -22,15 +22,16 @@ const ProductList = () => {
 
           return (
             <li className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
-              <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 no-underline `}><Link href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
-              <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-light underline `}>Categorías</h4>
+              <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
+              <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight  `}>Categorías</h4>
               <p className={` text-md md:text-lg lg:text-xl font-Oswald text-black text-opacity-80 mb-4`} >
               {softw.softCategs.map((categId, index) => {
                   const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
+                  const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
                   return (
-                    <span key={index}>
+                    <Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>
                       {categoryName}{index < softw.softCategs.length - 1 && ", "}
-                    </span>
+                    </Link>
                   );
                 })}.
               </p>
