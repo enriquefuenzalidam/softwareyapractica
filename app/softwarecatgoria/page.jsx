@@ -8,11 +8,11 @@ import FondoCabecera from '../components/fondoCabecera';
 import shoppingCartIcon from 'public/images/cart-shopping.svg'
 
 
-export default function Home() {
+const SoftwareCategoria = () => {
   const { cartTotal, isEmpty } = useCartContext();
   return (
     <main className={` font-Roboto `}>
-      <FondoCabecera portada={true}/>
+      <FondoCabecera portada={false}/>
 
       <section className={` relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 pt-3 sm:pt-4 md:pt-5 lg:pt-6 px-3 sm:px-4 md:px-5 lg:px-6 `}>
 
@@ -33,4 +33,6 @@ export default function Home() {
 
     </main>
   );
-}
+};
+
+export default SoftwareCategoria;
