@@ -23,29 +23,24 @@ const ProductList = () => {
           return (
             <li className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
               <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
-              <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight  `}>Categoría{softw.softCategs.length>1&&`s`}:</h4>
+              <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight  `}>Categoría{softw.softCategs.length > 1 && `s`}:</h4>
               <p className={` text-md md:text-lg lg:text-xl font-Oswald text-black text-opacity-80 mb-4`} >
-              {softw.softCategs.map((categId, index) => {
+                {softw.softCategs.map((categId, index) => {
                   const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
                   const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
                   return (
-                    <><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{ softw.softCategs.length !== 1 && (index < softw.softCategs.length-1 && (  index < softw.softCategs.length-2 ? `, `: ` y `))}</>);}
-                  )}.
+                    <><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</>);
+                }
+                )}.
               </p>
-              <p className={` text-2xl font-light  font-Oswald `}>Precio: $ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
-              {/**/}
+              <p className={` text-2xl font-Oswald `}><span className={` font-extralight `}>Precio: </span><span className={` font-medium `}>$ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span></p>
+
               {quantity !== 0 && (
                 <p>
-              <span className={` absolute top-full left-full -translate-x-[calc(100%+1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 px-5 inline-block font-bold text-lg md:text-xl rounded-sm overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-neutral-500 `}>
-                {quantity}
-              </span></p>
+                  <span className={` absolute top-full left-full -translate-x-[calc(100%+1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 px-3 inline-block font-bold text-lg md:text-xl rounded-sm overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-neutral-500 `}>
+                    {quantity}
+                  </span></p>
               )}
-              {/*
-              <p className={` mt-4 w-28 grid grid-cols-3 font-bold text-md rounded-sm overflow-hidden ${ quantity !== 0 ? `bg-[#faae3b] ` : `bg-white` }  bg-opacity-70 shadow-inner shadow-neutral-500 `}>
-                <span className={` cursor-pointer text-center text-black  hover:bg-black hover:text-white `}  onClick={() => addItem(softw)}>+</span>
-                <span className={` text-center  `}>{quantity}</span>
-                <span className={` cursor-pointer text-center text-black  hover:bg-black hover:text-white`} onClick={() => removeItem(softw.id)}>-</span>
-              </p>*/}
             </li>
           );
         })}

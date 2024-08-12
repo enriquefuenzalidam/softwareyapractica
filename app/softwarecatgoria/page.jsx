@@ -26,9 +26,8 @@ const SoftwareCategoria = () => {
       <main className={` font-Roboto `}>
         <FondoCabecera portada={false} />
         <section className={` relative p-12 sm:p-16 md:p-20 lg:p-24 px-3 sm:px-4 md:px-5 lg:px-6 `}>
-
           <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40  `}>
-            <h2 className={` mx-auto my-8  max-w-7xl text-center text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}><span className={`  font-light `}>La categoría buscada no existe</span></h2>
+            <h2 className={` mx-auto my-8  max-w-7xl text-center text-xl sm:text-2xl md:text-3xl uppercase text-violet-800 text-opacity-100 font-Oswald `}><span className={`  font-light `}>La categoría buscada no existe</span></h2>
           </div>
         </section>
       </main>
@@ -44,7 +43,7 @@ const SoftwareCategoria = () => {
           </span>
         </p>
         <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40  `}>
-          <h2 className={` mx-auto mb-8  max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}><span className={`  font-light `}>Softwares dentro de categoría</span> <span className={` font-medium `}>{categoryName}</span></h2>
+          <h2 className={` mx-auto mb-8  max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase text-violet-800 text-opacity-100 font-Oswald `}><span className={`  font-light `}>Softwares dentro de categoría</span> <span className={` font-medium `}>{categoryName}</span></h2>
           <CategoriaProductos categoryId={numericCatgoriaId} />
         </div>
 

@@ -35,24 +35,24 @@ const PodructoDespliegue = ({ productId }) => {
           {softw.softNombr}
         </h3>
         <h4 className="text-black text-opacity-80 text-xl sm:text-2xl lg:text-3xl font-Oswald font-extralight mt-4">
-          Categoría{softw.softCategs.length>1&&`s`}:</h4>
-        <p className="text-lg md:text-xl lg:text-2xl grow font-Oswald text-black text-opacity-80 mt-2">
+          Categoría{softw.softCategs.length > 1 && `s`}:</h4>
+        <p className="text-lg md:text-xl lg:text-2xl grow font-Oswald text-black text-opacity-80 mt-0 md:mt-2">
           {softw.softCategs.map((categId, index) => {
             const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
             const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
             return (
-              <><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{ softw.softCategs.length !== 1 && (index < softw.softCategs.length-1 && (  index < softw.softCategs.length-2 ? `, `: ` y `))}</>);}
-            )}.
+              <><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</>);
+          }
+          )}.
         </p>
-        <p className={` text-2xl font-light font-Oswald mt-8 `}>
-          Precio: $ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}
-        </p>
+        <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Precio:</p>
+        <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
         <div>
-        <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto mt-4 inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `}>
-          <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw)}>+</span>
-          <span className={` px-6 py-1 text-center `}>{quantity}</span>
-          <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(softw.id)}>-</span>
-        </p>
+          <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-4 md:mt-8 `}>
+            <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw)}>+</span>
+            <span className={` px-6 py-1 text-center `}>{quantity}</span>
+            <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(softw.id)}>-</span>
+          </p>
         </div>
       </div>
     </div>
