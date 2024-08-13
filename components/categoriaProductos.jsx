@@ -36,7 +36,7 @@ const CategoriaProductos = ({ categoryId }) => {
                 }
                 )}.
               </p>
-              <p className={` text-2xl font-light  font-Oswald mt-4 `}>Precio: $ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
+              <p className={` text-lg sm:text-xl md:text-2xl font-Oswald mt-4 `}><span className={` font-light `}>Precio: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span></p>
               {quantity !== 0 && (
                 <p>
                   <span className={` absolute top-full left-full -translate-x-[calc(100%+1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 px-5 inline-block font-bold text-lg md:text-xl rounded-sm overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-neutral-500 `}>

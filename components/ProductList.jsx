@@ -33,7 +33,7 @@ const ProductList = () => {
                 }
                 )}.
               </p>
-              <p className={` text-2xl font-Oswald `}><span className={` font-extralight `}>Precio: </span><span className={` font-medium `}>$ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span></p>
+              <p className={` text-lg sm:text-xl md:text-2xl font-Oswald `}><span className={` font-light `}>Precio: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span></p>
 
               {quantity !== 0 && (
                 <p>
