@@ -31,10 +31,13 @@ const PodructoDespliegue = ({ productId }) => {
         <div className={` absolute inset-0 shadow-inner shadow-[rgba(0,0,0,0.5)] `}></div>
       </div>
       <div className={` mt-4 md:mt-0 flex flex-col `}>
-        <h3 className="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold mb-4">
+        <h3 className="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold ">
           {softw.softNombr}
         </h3>
-        <h4 className="text-black text-opacity-80 text-xl sm:text-2xl lg:text-3xl font-Oswald font-extralight mt-4">
+        {softw.softDescr && (
+          <p className={` tracking-tight hyphens-auto mt-4 font-RobotoCondensed font-light text-lg sm:text-xl md:text-2xl `}>{softw.softDescr}</p>
+        )}  
+        <h4 className="text-black text-opacity-80 text-xl sm:text-2xl lg:text-3xl font-Oswald font-extralight mt-6">
           Categoría{softw.softCategs.length > 1 && `s`}:</h4>
         <p className="text-lg md:text-xl lg:text-2xl grow font-Oswald text-black text-opacity-80 mt-0 md:mt-2">
           {softw.softCategs.map((categId, index) => {
