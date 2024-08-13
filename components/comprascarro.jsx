@@ -22,18 +22,18 @@ const ComprasCarro = () => {
           const quantity = cartItem ? cartItem.quantity : 0;
 
           return (
-            <li className={`relative flex flex-row rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] mb-6 `} key={item.id}>
-              <div className={` w-2/3 `}>
+            <li className={`relative rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] mb-6 `} key={item.id}>
+              <div className={` w-full `}>
                 <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal `}>
                   <Link className={` no-underline hover:underline `} href={`/software?productId=${item.id}`}>{item.softNombr}</Link>
                 </h3>
                 <p className={` text-lg sm:text-xl md:text-2xl font-Oswald mt-4 mr-4`}><span className={` font-light `}>Precio: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(item.softPrec)}</span></p>
               </div>
-              <div className={` w-1/3 flex justify-end items-end`}>
-                <p className={`w-full text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `}>
-                  <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(item)}>+</span>
-                  <span className={` px-6 py-1 text-center `}>{quantity}</span>
-                  <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(item.id)}>-</span>
+              <div className={`relative `}>
+                <p className={` absolute top-full left-full -translate-x-full -translate-y-full text-md sm:text-lg md:text-xl lg:text-2xl text-center text-black font-Roboto min-w-36 md:min-w-48 grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `}>
+                  <span className={` px-3 md:px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(item)}>+</span>
+                  <span className={` px-3 md:px-6 py-1 text-center `}>{quantity}</span>
+                  <span className={` px-3 md:px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(item.id)}>-</span>
                 </p>
               </div>
             </li>
