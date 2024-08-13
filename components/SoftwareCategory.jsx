@@ -24,8 +24,8 @@ const SoftwareCategory = () => {
 
   return (
     <div className={`relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40`}>
-      <h2 className={`mx-auto mb-8 max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase text-violet-800 text-opacity-100 font-Oswald`}>
-        <span className={`font-light`}>Softwares dentro de categoría</span> <span className={`font-medium`}>{categoryName}</span>
+      <h2 className={`mx-auto mb-8 max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase text-opacity-100 font-Oswald`}>
+        <span className={`font-extralight text-[#261b5b]`}>Softwares en categoría</span> <span className={`font-medium text-[#2184b6] `}>{categoryName}</span>
       </h2>
       <CategoriaProductos categoryId={numericCatgoriaId} />
     </div>
