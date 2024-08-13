@@ -1,13 +1,16 @@
+"use client";
 import { useCartContext } from '../app/context/CartContext';
+import { useState } from 'react';
 import softwLista from 'data/softwLista.json';
 import categNombrs from 'data/categNombrs.json';
 import imagsNombrs from 'data/imagsNombrs.json';
 import Link from 'next/link';
 
-import tempSoftImg from 'public/images/tempSoftImg.jpg'
+import tempSoftImg from 'public/images/tempSoftImg.jpg';
 
 const PodructoDespliegue = ({ productId }) => {
   const { addItem, removeItem, items, hydrated } = useCartContext();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!hydrated) {
     return null; // Return a loading state or nothing while the cart is being hydrated
@@ -25,23 +28,66 @@ const PodructoDespliegue = ({ productId }) => {
   const cartItem = items.find(item => item.id === softw.id);
   const quantity = cartItem ? cartItem.quantity : 0;
 
+  // Ensure the softw.softImags exists and is not empty before accessing it
+  const hasImages = softw.softImags && softw.softImags.length > 0;
+
+  // Handle next and previous image
+  const nextImage = () => {
+    if (hasImages) {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % softw.softImags.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (hasImages) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? softw.softImags.length - 1 : prevIndex - 1
+      );
+    }
+  };
+
+  // Get the current image URL if images are present
+  const currentImageUrl = hasImages
+    ? require(`public/softImagenes/${imagsNombrs.find(imgId => imgId.id === softw.softImags[currentImageIndex])?.imageName}`).default
+    : null;
+
   return (
     <div className={` grid grid-cols-1 md:grid-cols-2 md:gap-4 `}>
-      <div className={` relative min-h-96 overflow-scroll shadow-inner bg-white  `} >
+      <div className={` relative min-h-96 overflow-scroll shadow-inner bg-white `}  style={!softw.softImags ? { backgroundImage: `url(${tempSoftImg.src})`, backgroundRepeat: `no-repeat`, backgroundPosition: `center center`, backgroundSize: `contain` } : undefined} >
 
-        {softw.softImags && softw.softImags.length > 0 ? (
-          softw.softImags.map((imagenId, index) => {
-            const imagenNombre = imagsNombrs.find(imgId => imgId.id === imagenId)?.imageName;
-            const imagenUrl = require(`public/softImagenes/${imagenNombre}`).default;
-            return (
-              <img key={index} className={` absolute top-0 left-0 h-full w-full object-contain object-center `} src={imagenUrl.src} alt='' />
-            );
-          })
-        ) : (
-          <img className={` absolute h-full w-full object-contain object-center `} src={tempSoftImg.src} alt='' />
-        )}
+{/* this block should be an images slideshow if the item has more than one image */}
 
-        <div className={` absolute inset-0 shadow-inner shadow-[rgba(0,0,0,0.5)] `} />
+{hasImages && (
+  <>
+    <img
+      className="absolute top-0 left-0 h-full w-full object-contain object-center"
+      src={currentImageUrl.src}
+      alt=""
+    />
+  </>
+)}
+<div className={` absolute inset-0 shadow-inner shadow-[rgba(0,0,0,0.5)] `} />
+{softw.softImags && softw.softImags.length > 1 && (
+  <>
+    <span
+      className={`cursor-pointer absolute top-1/2 left-2 hover:left-3 -translate-y-1/2 font-Roboto font-normal text-9xl text-white`}
+      style={{ textShadow: `0.3rem 0 0.4rem rgba(0,0,0,0.5)` }}
+      onClick={prevImage}  // <- Add onClick handler here
+    >
+      &#8249;
+    </span>
+    <span
+      className={`cursor-pointer absolute top-1/2 left-full -translate-y-1/2 -translate-x-[calc(100%+0.5rem)] hover:-translate-x-[calc(100%+0.75rem)] font-Roboto font-normal text-9xl text-white`}
+      style={{ textShadow: `-0.3rem 0 0.4rem rgba(0,0,0,0.5)` }}
+      onClick={nextImage}  // <- Add onClick handler here
+    >
+      &#8250;
+    </span>
+  </>
+)}
+
+{/* block's end */}
+
       </div>
       <div className={` mt-4 md:mt-0 flex flex-col `}>
         <h3 className="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold ">
