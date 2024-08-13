@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className={` relative w-full bg-zinc-800 text-center`}>
       <div className={` absolute top-0 left-0 w-full h-full bg-repeat `} style={{ backgroundImage: `url(images/noise.png)` }} />
       <div className={`  absolute top-0 left-0 w-full h-4 bg-gradient-to-b from-[rgba(0,0,0,1)] to-transparent `} />
-      <div className={` relative max-w-7xl mx-auto flex flex-col-reverse md:flex-row gap-10 md:gap-6 py-10 md:py-0`}>
+      <section className={` relative max-w-7xl mx-auto flex flex-col-reverse md:flex-row gap-10 md:gap-6 py-10 md:py-0`}>
         <div className={` w-full md:w-1/2 flex flex-col items-center justify-center `}>
           <p className={` `}>
             <Link className={` inline-block relative h-12 w-12 rounded-full bg-white bg-opacity-60 m-4 `} href=''><img className={`m-auto inset-0 w-6 h-auto object-bottom absolute opacity-60 `} src={instagramIcon.src} alt='' /></Link>
@@ -44,7 +44,7 @@ const Footer = () => {
           </address>
           <p className={` my-4 ml-16 md:px-0 px-8 `}>Lunes a Viernes de 9:00 AM a 18:00 PM</p>
         </div>
-      </div>
+      </section>
     </footer>
   );
 };

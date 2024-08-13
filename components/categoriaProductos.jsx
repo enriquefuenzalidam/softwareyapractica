@@ -15,7 +15,7 @@ const CategoriaProductos = ({ categoryId }) => {
 
   return (
     <>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 ">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
         {filteredProducts.map(softw => {
           // Find the item in the cart
           const cartItem = items.find(item => item.id === softw.id);
