@@ -42,7 +42,7 @@ const Footer = () => {
             <p className={` float-left ml-3 mt-0 `}><img className={` w-8 h-auto opacity-60 `} src={email.src} alt='' /></p>
             <p className={` not-italic ml-16 `}><Link className={` no-underline `} href='mailto:latasoftchile@gmail.com'>latasoftchile@gmail.com</Link></p>
           </address>
-          <p className={` my-4 ml-16 md:px-0 px-8 `}>Lunes a Viernes de 9:00 AM a 18:00 PM</p>
+          <p className={` my-4 ml-16 md:px-0 px-8 `}>Lunes a Viernes<br/>de 9:00 AM a 18:00 PM</p>
         </div>
       </section>
     </footer>

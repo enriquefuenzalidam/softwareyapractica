@@ -19,7 +19,6 @@ const ProductList = () => {
           // Find the item in the cart
           const cartItem = items.find(item => item.id === softw.id);
           const quantity = cartItem ? cartItem.quantity : 0;
-
           return (
             <li className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
               <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
@@ -34,7 +33,6 @@ const ProductList = () => {
                 )}.
               </p>
               <p className={` text-lg sm:text-xl md:text-2xl font-Oswald `}><span className={` font-light `}>Precio: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span></p>
-
               {quantity !== 0 && (
                 <p>
                   <span className={` absolute top-full left-full -translate-x-[calc(100%+1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 px-3 inline-block font-bold text-lg md:text-xl rounded-sm overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-neutral-500 `}>
