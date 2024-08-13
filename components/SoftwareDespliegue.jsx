@@ -1,6 +1,7 @@
 import { useCartContext } from '../app/context/CartContext';
 import softwLista from 'data/softwLista.json';
 import categNombrs from 'data/categNombrs.json';
+import imagsNombrs from 'data/imagsNombrs.json';
 import Link from 'next/link';
 
 import tempSoftImg from 'public/images/tempSoftImg.jpg'
@@ -26,9 +27,21 @@ const PodructoDespliegue = ({ productId }) => {
 
   return (
     <div className={` grid grid-cols-1 md:grid-cols-2 md:gap-4 `}>
-      <div className={` relative min-h-96 overflow-hidden shadow-inner bg-white  `} >
-        <img className={` absolute h-full w-full object-contain object-center `} src={tempSoftImg.src} alt='' />
-        <div className={` absolute inset-0 shadow-inner shadow-[rgba(0,0,0,0.5)] `}></div>
+      <div className={` relative min-h-96 overflow-scroll shadow-inner bg-white  `} >
+
+        {softw.softImags && softw.softImags.length > 0 ? (
+          softw.softImags.map((imagenId, index) => {
+            const imagenNombre = imagsNombrs.find(imgId => imgId.id === imagenId)?.imageName;
+            const imagenUrl = require(`public/softImagenes/${imagenNombre}`).default;
+            return (
+              <img key={index} className={` absolute top-0 left-0 h-full w-full object-contain object-center `} src={imagenUrl.src} alt='' />
+            );
+          })
+        ) : (
+          <img className={` absolute h-full w-full object-contain object-center `} src={tempSoftImg.src} alt='' />
+        )}
+
+        <div className={` absolute inset-0 shadow-inner shadow-[rgba(0,0,0,0.5)] `} />
       </div>
       <div className={` mt-4 md:mt-0 flex flex-col `}>
         <h3 className="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold ">
