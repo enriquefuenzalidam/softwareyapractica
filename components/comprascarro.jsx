@@ -27,7 +27,7 @@ const ComprasCarro = () => {
                 <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal `}>
                   <Link className={` no-underline hover:underline `} href={`/software?productId=${item.id}`}>{item.softNombr}</Link>
                 </h3>
-                <p className={` text-lg sm:text-xl md:text-2xl font-Oswald mt-4 mr-4`}><span className={` font-light `}>Precio: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(item.softPrec)}</span></p>
+                <p className={` text-lg sm:text-xl md:text-2xl font-Oswald mt-4 mr-4`}><span className={` font-light `}>Precio compra: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(item.softPrec)}</span></p>
               </div>
               <div className={`relative `}>
                 <p className={` absolute top-full left-full -translate-x-full -translate-y-full text-md sm:text-lg md:text-xl lg:text-2xl text-center text-black font-Roboto min-w-36 md:min-w-48 grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `}>
