@@ -32,6 +32,7 @@ const PodructoDespliegue = ({ productId }) => {
 
   return (
     <div className={` grid grid-cols-1 md:grid-cols-2 md:gap-4 `}>
+      <div>
       <div className={` relative min-h-96 overflow-scroll shadow-inner bg-white `} style={!softw.softImags ? { backgroundImage: `url(${tempSoftImg.src})`, backgroundRepeat: `no-repeat`, backgroundPosition: `center center`, backgroundSize: `contain` } : undefined} >
 
         {hasImages && (
@@ -50,13 +51,15 @@ const PodructoDespliegue = ({ productId }) => {
           </>
         )}
 
-      </div>
+      </div></div>
       <div className={` mt-4 md:mt-0 flex flex-col `}>
         <h3 className="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold ">
           {softw.softNombr}
         </h3>
         {softw.softDescr && (
-          <p className={` tracking-tight hyphens-auto mt-4 font-RobotoCondensed font-light text-lg sm:text-xl md:text-2xl `}>{softw.softDescr}</p>
+          <p className={` tracking-tight hyphens-auto mt-4 font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl `} dangerouslySetInnerHTML={{
+            __html: softw.softDescr.replace(/\n/g, `<br/>`),
+          }} />
         )}
         <h4 className="text-black text-opacity-80 text-xl sm:text-2xl lg:text-3xl font-Oswald font-extralight mt-6">
           Categoría{softw.softCategs.length > 1 && `s`}:</h4>
@@ -67,8 +70,11 @@ const PodructoDespliegue = ({ productId }) => {
             return (<><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</>);
           })}.
         </p>
-        <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Precio:</p>
+        <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Precio compra:</p>
         <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
+        {softw.softMensSub && ( <>
+        <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Suscripción mensual:</p>
+        <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</p> </> )}
         <div>
           <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-4 md:mt-8 `}>
             <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw)}>+</span>
