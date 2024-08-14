@@ -107,7 +107,7 @@ const PodructoDespliegue = ({ productId }) => {
           <div
             className="fixed inset-0 bg-black opacity-50 z-40"
             />
-            <span className="bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-sm inline-block fixed top-full -translate-y-[calc(100%+1rem)] left-1/2 -translate-x-1/2 z-50 text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 " onClick={handleCloseOverlay}>Cerrar</span>
+            <span className="bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-sm inline-block fixed top-0 translate-y-3 left-1/2 -translate-x-1/2 z-50 text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 " onClick={handleCloseOverlay}>Cerrar</span>
             </>
         )}
 
