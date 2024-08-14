@@ -71,47 +71,59 @@ const PodructoDespliegue = ({ productId }) => {
         </h3>
 
         {
-  softw.softDescr && (
-    <div
-      className={`tracking-tight hyphens-auto mt-4 font-light font-RobotoCondensed text-lg sm:text-xl md:text-xl block`}
-      dangerouslySetInnerHTML={{
-        __html: (softw.softDescr.length > 200 ? softw.softDescr.slice(0, 300) + '... ' : softw.softDescr),
-      }}
-    />
-  )
-}
-{
-  softw.softDescr.length > 200 && (
-    <p><span
-      className="inline-block cursor-pointer text-sky-700 italic font-bold font-RobotoCondensed text-lg sm:text-xl md:text-xl hover:translate-x-3 transition-transform ease-in-out"
-      onClick={handleShowMoreClick}
-    >
-      Leer más &#8250;&#8250;
-    </span></p>
-  )
-}
-
-
-{/* this is the block overlay that should appear as the user click the 'Leer más >>' */}
-        {softw.softDescr && showFullDescription && (
-          <div
-            className={` z-50 p-4 rounded-md shadow-md shadow-[rgba(0,0,0,0.5)] bg-slate-200 fixed top-16 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] max-w-[56rem] max-h-[calc(100vh-8rem)] overflow-scroll tracking-tight hyphens-auto font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl   ]`}
-            dangerouslySetInnerHTML={{
-              __html: `<h3 class="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold mb-4">` + (softw.softNombr) + `</h3><p class=" my-2">` + (softw.softDescr).replace(/\n/g, `</p><p class=" my-2">`) + `</p>`,
-            }}
-          />
-        )}
-
-{showFullDescription && (
-          <>
-          <div
-            className="fixed inset-0 bg-black opacity-50 z-40"
+          softw.softDescr && (
+            <div
+              className={`tracking-tight hyphens-auto mt-4 font-light font-RobotoCondensed text-lg sm:text-xl md:text-xl block`}
+              dangerouslySetInnerHTML={{
+                __html: (softw.softDescr.length > 200 ? softw.softDescr.slice(0, 300) + '... ' : softw.softDescr),
+              }}
             />
-            <span className="bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-sm inline-block fixed top-0 translate-y-3 left-1/2 -translate-x-1/2 z-50 text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 " onClick={handleCloseOverlay}>Cerrar</span>
-            </>
+          )
+        }
+        {
+          softw.softDescr.length > 200 && (
+            <p><span
+              className="inline-block cursor-pointer text-sky-700 italic font-bold font-RobotoCondensed text-lg sm:text-xl md:text-xl hover:translate-x-3 transition-transform ease-in-out"
+              onClick={handleShowMoreClick}
+            >
+              Leer más &#8250;&#8250;
+            </span></p>
+          )
+        }
+
+
+        {/* this is the block overlay that should appear as the user click the 'Leer más >>' */}
+        {softw.softDescr && showFullDescription && (
+          <div className={` z-50 fixed top-0 left-0 w-screen h-screen p-2 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center `}>
+
+            <div className={` relative flex max-w-[56rem] max-h-[calc(100vh-8rem)] rounded-md shadow-md shadow-[rgba(0,0,0,0.5)] bg-slate-200 `}>
+
+              <div className={`relative p-3 flex flex-col gap-3`}>
+
+                <div
+                  className={` p-6 grow overflow-scroll tracking-tight hyphens-auto font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl   ]`}
+                  dangerouslySetInnerHTML={{
+                    __html: `<h3 class="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold mb-4">` + (softw.softNombr) + `</h3><p class=" my-2">` + (softw.softDescr).replace(/\n/g, `</p><p class=" my-2">`) + `</p>`,
+                  }} />
+                <p className={` text-center `}><span className=" z-50 bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-sm text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 " onClick={handleCloseOverlay}>Cerrar</span></p>
+
+              </div>
+
+            </div>
+
+          </div>
         )}
 
-{/* block's end */}
+        {showFullDescription && (
+          <>
+            <div
+              className="fixed inset-0 bg-black opacity-50 z-40"
+            />
+
+          </>
+        )}
+
+        {/* block's end */}
 
         <h4 className="text-black text-opacity-80 text-xl sm:text-2xl lg:text-3xl font-Oswald font-extralight mt-6">
           Categoría{softw.softCategs.length > 1 && `s`}:</h4>
@@ -122,18 +134,36 @@ const PodructoDespliegue = ({ productId }) => {
             return (<><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</>);
           })}.
         </p>
-        <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Precio compra:</p>
-        <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
-        <div>
-          <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-1 md:mt-3 `}>
-            <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw)}>+</span>
-            <span className={` px-6 py-1 text-center `}>{quantity}</span>
-            <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(softw.id)}>-</span>
-          </p>
-        </div>
-        {softw.softMensSub && (<>
-          <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Suscripción mensual:</p>
-          <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</p> </>)}
+
+        {softw.softPrec && (
+          <div>
+
+            <p className={` text-2xl md:text-3xl mt-6 md:mt-10 `}>
+              <span className={` font-extralight  text-black text-opacity-80 font-Oswald `}>Precio compra: </span>
+              <span className={` font-medium      text-black text-opacity-80 font-Oswald `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span>
+            </p>
+            <div>
+              <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-2 md:mt-4 `}>
+                <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw)}>+</span>
+                <span className={` px-6 py-1 text-center `}>{quantity}</span>
+                <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(softw.id)}>-</span>
+              </p>
+            </div>
+
+          </div>
+        )}
+
+        {softw.softMensSub && (
+          <div>
+
+            <p className={` text-2xl md:text-3xl mt-6 md:mt-10 `}>
+              <span className={` font-extralight text-black text-opacity-80 font-Oswald `}>Precio sucripción: </span>
+              <span className={` font-medium     text-black text-opacity-80 font-Oswald `}>${new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</span>
+            </p>
+
+          </div>
+        )}
+
       </div>
     </div>
   );
