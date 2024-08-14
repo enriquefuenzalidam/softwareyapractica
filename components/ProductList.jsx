@@ -21,18 +21,22 @@ const ProductList = () => {
           const quantity = cartItem ? cartItem.quantity : 0;
           return (
             <li className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
-              <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
+              <h3 className={` text-black text-opacity-80 text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
               <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight  `}>Categoría{softw.softCategs.length > 1 && `s`}:</h4>
-              <p className={` text-md md:text-lg lg:text-xl font-Oswald text-black text-opacity-80 mb-4`} >
+              <p className={` grow text-md md:text-lg lg:text-xl font-Oswald text-black text-opacity-80 mb-4`} >
                 {softw.softCategs.map((categId, index) => {
                   const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
                   const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
                   return (<><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</>);
                 })}.
               </p>
-              <p className={` text-lg sm:text-xl md:text-2xl font-Oswald `}><span className={` font-light `}>Precio compra: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span></p>
+                <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-light mt-4 `}>Precio compra: </p>
+                <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
               {softw.softMensSub && (
-                <p className={` text-lg sm:text-xl md:text-2xl font-Oswald `}><span className={` font-light `}>Precio sucripción: </span><span className={` font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</span></p>
+                <>
+                <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-light mt-2 `}>Precio sucripción: </p>
+                <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</p>
+                </>
               )}
               {quantity !== 0 && (
                 <p>
