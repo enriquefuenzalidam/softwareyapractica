@@ -57,9 +57,12 @@ const PodructoDespliegue = ({ productId }) => {
           {softw.softNombr}
         </h3>
         {softw.softDescr && (
-          <p className={` tracking-tight hyphens-auto mt-4 font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl `} dangerouslySetInnerHTML={{
-            __html: softw.softDescr.replace(/\n/g, `<br/>`),
-          }} />
+          <div
+            className={`tracking-tight hyphens-auto mt-4 font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl`}
+            dangerouslySetInnerHTML={{
+              __html: `<p>` + softw.softDescr.replace(/\n/g, `</p><p>`) + `</p>`,
+            }}
+          />
         )}
         <h4 className="text-black text-opacity-80 text-xl sm:text-2xl lg:text-3xl font-Oswald font-extralight mt-6">
           Categoría{softw.softCategs.length > 1 && `s`}:</h4>
@@ -72,16 +75,16 @@ const PodructoDespliegue = ({ productId }) => {
         </p>
         <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Precio compra:</p>
         <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
-        {softw.softMensSub && ( <>
-        <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Suscripción mensual:</p>
-        <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</p> </> )}
         <div>
-          <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-4 md:mt-8 `}>
+          <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-1 md:mt-3 `}>
             <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw)}>+</span>
             <span className={` px-6 py-1 text-center `}>{quantity}</span>
             <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(softw.id)}>-</span>
           </p>
         </div>
+        {softw.softMensSub && ( <>
+        <p className={` font-extralight  text-2xl md:text-3xl text-black text-opacity-80    font-Oswald mt-4 md:mt-8 `}>Suscripción mensual:</p>
+        <p className={` font-medium      text-2xl md:text-3xl text-black text-opacity-80 font-Oswald    mt-0 md:mt-2`}>$ {new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</p> </> )}
       </div>
     </div>
   );
