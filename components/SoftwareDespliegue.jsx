@@ -70,26 +70,26 @@ const PodructoDespliegue = ({ productId }) => {
           {softw.softNombr}
         </h3>
 
+        <p className={` mt-4 `}>
         {
           softw.softDescr && (
-            <div
-              className={`tracking-tight hyphens-auto mt-4 font-light font-RobotoCondensed text-lg sm:text-xl md:text-xl block`}
+            <span
+              className={`tracking-tight hyphens-auto font-light font-RobotoCondensed text-lg sm:text-xl md:text-xl `}
               dangerouslySetInnerHTML={{
-                __html: (softw.softDescr.length > 200 ? softw.softDescr.slice(0, 300) + '... ' : softw.softDescr),
+                __html: (softw.softDescr.length > 100 ? softw.softDescr.slice(0, 150) + '... ' : softw.softDescr),
               }}
             />
           )
         }
         {
-          softw.softDescr.length > 200 && (
-            <p><span
-              className="inline-block cursor-pointer text-sky-700 italic font-bold font-RobotoCondensed text-lg sm:text-xl md:text-xl hover:translate-x-3 transition-transform ease-in-out"
-              onClick={handleShowMoreClick}
-            >
-              Leer más &#8250;&#8250;
-            </span></p>
+          softw.softDescr.length > 100 && (
+            <span
+              className="inline whitespace-nowrap cursor-pointer text-sky-700 italic font-bold font-RobotoCondensed text-lg sm:text-xl md:text-xl hover:translate-x-3 transition-transform ease-in-out"
+              onClick={handleShowMoreClick} >
+              Leer más &#8250;&#8250;</span>
           )
         }
+        </p>
 
 
         {/* this is the block overlay that should appear as the user click the 'Leer más >>' */}
@@ -97,20 +97,15 @@ const PodructoDespliegue = ({ productId }) => {
           <div className={` z-50 fixed top-0 left-0 w-screen h-screen p-2 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center `}>
 
             <div className={` relative flex max-w-[56rem] max-h-[calc(100vh-8rem)] rounded-md shadow-md shadow-[rgba(0,0,0,0.5)] bg-slate-200 `}>
-
               <div className={`relative p-3 flex flex-col gap-3`}>
-
                 <div
                   className={` p-6 grow overflow-scroll tracking-tight hyphens-auto font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl   ]`}
                   dangerouslySetInnerHTML={{
                     __html: `<h3 class="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold mb-4">` + (softw.softNombr) + `</h3><p class=" my-2">` + (softw.softDescr).replace(/\n/g, `</p><p class=" my-2">`) + `</p>`,
                   }} />
                 <p className={` text-center `}><span className=" z-50 bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-sm text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 " onClick={handleCloseOverlay}>Cerrar</span></p>
-
               </div>
-
             </div>
-
           </div>
         )}
 
