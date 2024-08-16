@@ -36,7 +36,7 @@ const ComprasCarro = () => {
                   <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</p>
 
                   {quantity > 0 && (
-                    <p className={` absolute top-full left-full -translate-x-full -translate-y-full text-md sm:text-lg md:text-xl lg:text-2xl text-center text-black font-Roboto min-w-36 md:min-w-48 grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `}>
+                    <p className={` absolute top-full left-full -translate-x-full -translate-y-full text-md sm:text-lg md:text-xl lg:text-2xl text-center text-black font-Roboto min-w-36 md:min-w-48 grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `} style={{ userSelect: 'none' }}>
                       <span className={` px-3 md:px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(item, 'purchase')}>+</span>
                       <span className={` px-3 md:px-6 py-1 text-center `}>{quantity}</span>
                       <span className={` px-3 md:px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(item.id, 'purchase')}>-</span>
@@ -51,7 +51,7 @@ const ComprasCarro = () => {
                   <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</p>
 
                   {subsQuantity > 0 && (
-                    <p className={` absolute top-full left-full -translate-x-full -translate-y-full text-md sm:text-lg md:text-xl lg:text-2xl text-center text-black font-Roboto min-w-36 md:min-w-48 grid grid-cols-3 font-bold rounded-sm ${subsQuantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `}>
+                    <p className={` absolute top-full left-full -translate-x-full -translate-y-full text-md sm:text-lg md:text-xl lg:text-2xl text-center text-black font-Roboto min-w-36 md:min-w-48 grid grid-cols-3 font-bold rounded-sm ${subsQuantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 `} style={{ userSelect: 'none' }}>
                       <span className={` px-3 md:px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(item, 'subscription')}>+</span>
                       <span className={` px-3 md:px-6 py-1 text-center `}>{subsQuantity}</span>
                       <span className={` px-3 md:px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(item.id, 'subscription')}>-</span>

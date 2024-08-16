@@ -139,7 +139,7 @@ const PodructoDespliegue = ({ productId }) => {
               <span className={` font-medium      text-black text-opacity-80 font-Oswald `}>${new Intl.NumberFormat('es-CL').format(softw.softPrec)}</span>
             </p>
             <div>
-              <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-2 md:mt-4 `}>
+              <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${quantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-2 md:mt-4 `} style={{ userSelect: 'none' }}>
                 <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw, 'purchase')}>+</span>
                 <span className={` px-6 py-1 text-center `}>{quantity}</span>
                 <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(softw.id, 'purchase')}>-</span>
@@ -157,7 +157,7 @@ const PodructoDespliegue = ({ productId }) => {
               <span className={` font-medium     text-black text-opacity-80 font-Oswald `}>${new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</span>
             </p>
             <div>
-              <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${subsQuantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-2 md:mt-4 `}>
+              <p className={`  text-lg sm:text-xl md:text-2xl text-center text-black font-Roboto inline-grid grid-cols-3 font-bold rounded-sm ${subsQuantity !== 0 ? `bg-[#faae3b] ` : `bg-white`} bg-opacity-70 shadow-inner shadow-neutral-500 mt-2 md:mt-4 `} style={{ userSelect: 'none' }}>
                 <span className={` px-6 py-1 cursor-pointer  hover:bg-black hover:text-white `} onClick={() => addItem(softw, 'subscription')}>+</span>
                 <span className={` px-6 py-1 text-center `}>{subsQuantity}</span>
                 <span className={` px-6 py-1 cursor-pointer hover:bg-black hover:text-white `} onClick={() => removeItem(softw.id, 'subscription')}>-</span>
