@@ -59,9 +59,9 @@ const PodructoDespliegue = ({ productId }) => {
           {softw.softImags && softw.softImags.length > 1 && (
             <>
               <span className={` transition-all ease-in-out cursor-pointer absolute top-1/2 left-2 hover:left-3 -translate-y-1/2 font-Roboto font-normal text-9xl text-white`}
-                style={{ textShadow: `0.3rem 0 0.6rem rgba(0,0,0,0.8)` }} onClick={prevImage}>&#8249;</span>
+                style={{ textShadow: `0.3rem 0 0.6rem rgba(0,0,0,0.8)`, userSelect: `none` }} onClick={prevImage}>&#8249;</span>
               <span className={` transition-all ease-in-out cursor-pointer absolute top-1/2 left-full -translate-y-1/2 -translate-x-[calc(100%+0.5rem)] hover:-translate-x-[calc(100%+0.75rem)] font-Roboto font-normal text-9xl text-white`}
-                style={{ textShadow: `-0.3rem 0 0.6rem rgba(0,0,0,0.8)` }} onClick={nextImage}>&#8250;</span>
+                style={{ textShadow: `-0.3rem 0 0.6rem rgba(0,0,0,0.8)`, userSelect: `none` }} onClick={nextImage}>&#8250;</span>
             </>
           )}
 
