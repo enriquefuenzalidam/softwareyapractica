@@ -105,7 +105,7 @@ const PodructoDespliegue = ({ productId }) => {
                   dangerouslySetInnerHTML={{
                     __html: `<h3 class="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold mb-4">` + (softw.softNombr) + `</h3><p class=" my-2">` + (softw.softDescr).replace(/\n/g, `</p><p class=" my-2">`) + `</p>`,
                   }} />
-                <p className={` text-center `}><span className=" z-50 bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-sm text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 " onClick={handleCloseOverlay}>Cerrar</span></p>
+                <p className={` text-center `}><span className=" z-50 bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-md text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 " onClick={handleCloseOverlay}>Cerrar</span></p>
               </div>
             </div>
           </div>

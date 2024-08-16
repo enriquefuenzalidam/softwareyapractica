@@ -66,10 +66,11 @@ const ComprasCarro = () => {
         })}
       </ul>
       <div className={` w-full md:w-2/6 `}>
-        <p className={`block ml-0 md:ml-6 align-middle border-0 overflow-hidden relative rounded-sm py-2 px-6 bg-opacity-70 shadow-inner shadow-neutral-700 uppercase font-medium font-Oswald text-black ${isEmpty ? `text-opacity-30 bg-sky-100` : `text-opacity-80 bg-[#faae3b]`} text-xl lg:text-2xl`}>
-          <img className={`object-center object-contain w-6 lg:w-7 h-auto inline ${isEmpty ? `opacity-30` : `opacity-60`} mr-3`} src={shoppingCartIcon.src} width="28" height="auto" alt="" />
+        <p className={`block ml-0 md:ml-6 align-middle border-0 overflow-hidden relative rounded-sm py-2 px-6 bg-opacity-70 shadow-inner shadow-neutral-700 uppercase font-medium font-Oswald text-black ${isEmpty ? `text-opacity-30 bg-sky-100` : `text-opacity-80 bg-[#faae3b]`} text-xl lg:text-2xl text-center`}>
+          <img className={`object-center object-contain w-12 lg:w-7 h-auto lg:inline ${isEmpty ? `opacity-30` : `opacity-60`} mx-auto lg:mr-3 my-2 lg:my-0`} src={shoppingCartIcon.src} width="28" height="auto" alt="" />
           {isEmpty ? `Carro vacío` : `Total: $ ${new Intl.NumberFormat('es-CL').format(cartTotal)}`}
         </p>
+        <p className={` text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl ml-0 md:ml-6 mt-6 px-4 py-3`}>Pagar aquí</p>
       </div>
     </div>
   );
