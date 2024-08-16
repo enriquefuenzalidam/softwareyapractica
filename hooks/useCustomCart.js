@@ -6,9 +6,18 @@ const useCustomCart = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedItems = localStorage.getItem('cartItems');
-      if (savedItems) {
-        setItems(JSON.parse(savedItems));
+      const savedCartData = localStorage.getItem('cartItems');
+      if (savedCartData) {
+        const parsedCartData = JSON.parse(savedCartData);
+        const currentTime = Date.now();
+        const timeLimit = 24 * 60 * 60 * 1000; // 24 hours in milliseconds (adjust as needed)
+        
+        if (currentTime - parsedCartData.timestamp < timeLimit) {
+          setItems(parsedCartData.items);
+        } else {
+          // Cart data is too old; clear it
+          localStorage.removeItem('cartItems');
+        }
       }
       setHydrated(true);
     }
@@ -16,7 +25,11 @@ const useCustomCart = () => {
 
   useEffect(() => {
     if (hydrated) {
-      localStorage.setItem('cartItems', JSON.stringify(items));
+      const cartData = {
+        items,
+        timestamp: Date.now(), // Store the current time
+      };
+      localStorage.setItem('cartItems', JSON.stringify(cartData));
     }
   }, [items, hydrated]);
 
