@@ -65,7 +65,8 @@ const PodructoDespliegue = ({ productId }) => {
             </>
           )}
 
-        </div></div>
+        </div>
+      </div>
       <div className={` mt-4 md:mt-0 flex flex-col `}>
         <h3 className="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold ">
           {softw.softNombr}
