@@ -20,6 +20,7 @@ const CategoriaProductos = ({ categoryId }) => {
           // Find the item in the cart
           const cartItem = items.find(item => item.id === softw.id);
           const quantity = cartItem ? cartItem.quantity : 0;
+          const subsQuantity = cartItem ? cartItem.subscriptionQuantity : 0;
 
           return (
             <li className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
@@ -52,10 +53,18 @@ const CategoriaProductos = ({ categoryId }) => {
                 </div>
               )}
               {softw.softMensSub && (
-                <>
+                <div className={` relative `}>
                   <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-light mt-2 `}>Precio sucripción: </p>
                   <p className={` text-lg sm:text-xl md:text-2xl font-Oswald font-medium `}>${new Intl.NumberFormat('es-CL').format(softw.softMensSub)}</p>
-                </>
+                                
+                  {subsQuantity !== 0 && (
+                    <p>
+                      <span className={` absolute top-full left-full -translate-x-[calc(100%)] -translate-y-[calc(100%+1rem)] text-center py-1 px-3 inline-block font-bold text-lg md:text-xl rounded-sm overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-neutral-500 `}>
+                        {subsQuantity}
+                      </span>
+                    </p>)}
+
+                </div>
               )}
             </li>
           );
