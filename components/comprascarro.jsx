@@ -30,8 +30,21 @@ const ComprasCarro = () => {
       const result = await response.json();
 
       if (response.ok) {
-        // Redirect the user to Transbank's payment page
-        window.location.href = result.url;
+        // Create a form element
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = result.url;
+      
+        // Create a hidden input for token_ws
+        const tokenInput = document.createElement('input');
+        tokenInput.type = 'hidden';
+        tokenInput.name = 'token_ws';
+        tokenInput.value = result.token;
+      
+        // Append the input to the form and submit it
+        form.appendChild(tokenInput);
+        document.body.appendChild(form);
+        form.submit();
       } else {
         console.error('Payment initiation failed:', result.error);
         // Handle the error (e.g., show an error message)
