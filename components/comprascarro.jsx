@@ -70,7 +70,10 @@ const ComprasCarro = () => {
           <img className={`object-center object-contain w-12 lg:w-7 h-auto lg:inline ${isEmpty ? `opacity-30` : `opacity-60`} mx-auto lg:mr-3 my-2 lg:my-0`} src={shoppingCartIcon.src} width="28" height="auto" alt="" />
           {isEmpty ? `Carro vacío` : `Total: $ ${new Intl.NumberFormat('es-CL').format(cartTotal)}`}
         </p>
-        <p className={` text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl ml-0 md:ml-6 mt-6 px-4 py-3`}>Pagar aquí</p>
+        <p
+          className={` text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl ml-0 md:ml-6 mt-6 px-4 py-3`}
+          // onClick={handlePayment}
+          >Pagar aquí</p>
       </div>
     </div>
   );
