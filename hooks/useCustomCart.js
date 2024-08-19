@@ -10,8 +10,8 @@ const useCustomCart = () => {
       if (savedCartData) {
         const parsedCartData = JSON.parse(savedCartData);
         const currentTime = Date.now();
-        const timeLimit = 24 * 60 * 60 * 1000; // 24 hours in milliseconds (adjust as needed)
-        
+        const timeLimit = 60 * 60 * 1000;
+
         if (currentTime - parsedCartData.timestamp < timeLimit) {
           setItems(parsedCartData.items);
         } else {
