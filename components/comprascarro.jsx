@@ -12,6 +12,36 @@ const ComprasCarro = () => {
     return null;
   }
 
+  const handlePayment = async () => {
+    try {
+      const response = await fetch('/api/create-transaction', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: cartTotal, // Total amount to be charged
+          sessionId: 'some_unique_session_id', // This should be a unique session identifier
+          buyOrder: `ORDER-${Date.now()}`, // A unique order ID
+          returnUrl: `${window.location.origin}/api/return-url`, // Return URL after payment
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Redirect the user to Transbank's payment page
+        window.location.href = result.url;
+      } else {
+        console.error('Payment initiation failed:', result.error);
+        // Handle the error (e.g., show an error message)
+      }
+    } catch (error) {
+      console.error('Payment initiation failed:', error);
+      // Handle the error (e.g., show an error message)
+    }
+  };
+
   return (
     <div className={` flex flex-col md:flex-row `} >
       <ul className={` w-full md:w-4/6`} >
@@ -72,7 +102,7 @@ const ComprasCarro = () => {
         </p>
         <p
           className={` text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl ml-0 md:ml-6 mt-6 px-4 py-3`}
-          // onClick={handlePayment}
+          onClick={handlePayment}
           >Pagar aquí</p>
       </div>
     </div>
