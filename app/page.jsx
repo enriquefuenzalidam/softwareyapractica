@@ -6,7 +6,7 @@ import FondoCabecera from '../components/fondoCabecera';
 import Link from 'next/link';
 
 import shoppingCartIcon from 'public/images/cart-shopping.svg'
-
+ 
 export default function Home() {
   const { cartTotal, isEmpty } = useCartContext();
   return (
