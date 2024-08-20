@@ -83,12 +83,19 @@ const useCustomCart = () => {
         .filter((i) => i.quantity > 0 || (i.subscriptionQuantity || 0) > 0) // Filter out items with both quantities at zero
     );
   };
+
+  // Add clearCart function
+  const clearCart = () => {
+    setItems([]);
+    localStorage.removeItem('cartItems'); // Remove cart data from localStorage
+  };
   
 
   return {
     items,
     addItem,
     removeItem,
+    clearCart, // Expose clearCart function
     isEmpty: items.length === 0,
     totalUniqueItems: items.length,
     cartTotal: items.reduce((total, item) => {

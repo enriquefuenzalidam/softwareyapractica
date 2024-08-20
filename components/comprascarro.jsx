@@ -29,8 +29,6 @@ const ComprasCarro = () => {
   };
 
   const handlePayment = async () => {
-    if (!validateForm()) return;
-
     try {
       const response = await fetch('/api/create-transaction', {
         method: 'POST',
@@ -38,26 +36,28 @@ const ComprasCarro = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: cartTotal,
-          sessionId: 'some_unique_session_id',
-          buyOrder: `ORDER-${Date.now()}`,
-          returnUrl: `${window.location.origin}/api/return-url`,
-          ...formData, // Include user data in the transaction creation request
+          amount: cartTotal, // Total amount to be charged
+          sessionId: 'some_unique_session_id', // This should be a unique session identifier
+          buyOrder: `ORDER-${Date.now()}`, // A unique order ID
+          returnUrl: `${window.location.origin}/api/return-url?name=${formData.name}&email=${formData.email}`, // Pass name and email
         }),
       });
-
+  
       const result = await response.json();
-
+  
       if (response.ok) {
+        // Create a form element
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = result.url;
-
+  
+        // Create a hidden input for token_ws
         const tokenInput = document.createElement('input');
         tokenInput.type = 'hidden';
         tokenInput.name = 'token_ws';
         tokenInput.value = result.token;
-
+  
+        // Append the input to the form and submit it
         form.appendChild(tokenInput);
         document.body.appendChild(form);
         form.submit();
