@@ -31,7 +31,7 @@ const FondoCabecera = ({ portada }) => {
                     {portada ?
                     <><span className={`  font-thin text-[#D4D4E1]`} data-aos-once="true" data-aos='fade' >so</span><span className={`  font-extralight text-[#C4CDD6] `} data-aos-once="true" data-aos='fade' >ft</span><span className={`  font-light text-[#C2CCE3] `} data-aos-once="true" data-aos='fade' >wa</span><span className={`  font-semibold text-[#BBC4D3] `} data-aos-once="true" data-aos='fade' >re</span><span className={`  font-extrabold  text-[#B7BFC6] `} data-aos-once="true" data-aos='fade' >ya</span></>
                     :
-                    <Link href="/" className={` no-underline `}>
+                    <Link href={HOME_URL} className={` no-underline `}>
                         <span className={`  font-thin text-[#D4D4E1]`} data-aos-once="true" data-aos='fade' >so</span><span className={`  font-extralight text-[#C4CDD6] `} data-aos-once="true" data-aos='fade' >ft</span><span className={`  font-light text-[#C2CCE3] `} data-aos-once="true" data-aos='fade' >wa</span><span className={`  font-semibold text-[#BBC4D3] `} data-aos-once="true" data-aos='fade' >re</span><span className={`  font-extrabold  text-[#B7BFC6] `} data-aos-once="true" data-aos='fade'  >ya</span>
                     </Link>
                     }
