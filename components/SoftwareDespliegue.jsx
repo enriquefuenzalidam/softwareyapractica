@@ -96,7 +96,7 @@ const PodructoDespliegue = ({ productId }) => {
 
         {/* this is the block overlay that should appear as the user click the 'Leer más >>' */}
         {softw.softDescr && showFullDescription && (
-          <div data-aos-once="true" data-aos='zoom-in-up' className={` z-50 fixed top-0 left-0 w-screen h-screen p-2 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center `}>
+          <div data-aos-once="true" data-aos='fade' className={` z-50 fixed top-0 left-0 w-screen h-screen p-2 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center `}>
 
             <div className={` relative flex max-w-[56rem] max-h-[calc(100vh-8rem)] rounded-md shadow-md shadow-[rgba(0,0,0,0.5)] bg-slate-200 `}>
               <div className={`relative p-3 flex flex-col gap-3`}>
