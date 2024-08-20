@@ -1,7 +1,6 @@
 'use client';
 import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { useCartContext } from '../context/CartContext';
 import FondoCabecera from '/components/fondoCabecera';
 import { HOME_URL, CART_URL } from '/lib/urls';
@@ -26,7 +25,7 @@ const PagoResultado = () => {
     if (success === 'true') {
       clearCart();
     }
-  }, [clearCart]);
+  }, []);
 
   if (compraExito === null) {
     return <div>Loading...</div>;

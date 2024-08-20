@@ -5,7 +5,7 @@ import FondoCabecera from '/components/fondoCabecera';
 import ComprasCarro from '/components/comprascarro';
 
 const SoftwarePage = () => {
-  const { cartTotal, isEmpty } = useCartContext();
+  const { isEmpty } = useCartContext();
 
   return (
     <main className="font-Roboto">
