@@ -6,9 +6,7 @@ import { useCartContext } from '../context/CartContext';
 import FondoCabecera from '/components/fondoCabecera';
 import { HOME_URL, CART_URL } from '/lib/urls';
 
-
 const PagoResultado = () => {
-  const searchParams = useSearchParams();
   const [compraExito, setCompraExito] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,6 +14,7 @@ const PagoResultado = () => {
   const { clearCart } = useCartContext();
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
     const success = searchParams.get('compraExito');
     const userName = searchParams.get('name');
     const userEmail = searchParams.get('email');
@@ -27,7 +26,7 @@ const PagoResultado = () => {
     if (success === 'true') {
       clearCart();
     }
-  }, [searchParams, clearCart]);
+  }, [clearCart]);
 
   if (compraExito === null) {
     return <div>Loading...</div>;
@@ -53,7 +52,7 @@ const PagoResultado = () => {
                   <span className={` font-medium `} >La compra no pudo ser procesada, {name}.</span><br />
                   <span className={` font-light `} >Revisa los datos ingresados y el medio de pago.</span>
                 </h2>
-                <p className={` mx-auto mt-8 mb-3 text-center `}><Link className={` hover:tracking-wider inline-block mx-auto text-lg sm:text-lg md:text-xl text-sky-600 italic font-bold font-Roboto no-underline hover:-translate-y-1 transition-all ease-in-out `} href={CART_URL} passHref>&#8249;&#8249; Volver al inicio</Link></p>
+                <p className={` mx-auto mt-8 mb-3 text-center `}><Link className={` hover:tracking-wider inline-block mx-auto text-lg sm:text-lg md:text-xl text-sky-600 italic font-bold font-Roboto no-underline hover:-translate-y-1 transition-all ease-in-out `} href={CART_URL} passHref>&#8249;&#8249; Volver al carro</Link></p>
               </>
             )}
           </div>
