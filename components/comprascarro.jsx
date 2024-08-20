@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { useCartContext } from '../app/context/CartContext';
 import softwLista from 'data/softwLista.json';
 import Link from 'next/link';
@@ -6,13 +7,30 @@ import shoppingCartIcon from 'public/images/cart-shopping.svg';
 
 const ComprasCarro = () => {
   const { items, addItem, removeItem, isEmpty, cartTotal, hydrated } = useCartContext();
+  const [formData, setFormData] = useState({ name: '', email: '', confirmEmail: '' });
+  const [errors, setErrors] = useState({});
 
   if (!hydrated) {
     // Return a loading state or nothing while the cart is being hydrated
     return null;
   }
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name) newErrors.name = 'Debe ingresar su nombre';
+    if (!formData.email) newErrors.email = 'Debe ingresar su correo';
+    if (formData.email !== formData.confirmEmail) newErrors.confirmEmail = 'Los correos electrónicos no coinciden';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handlePayment = async () => {
+    if (!validateForm()) return;
+
     try {
       const response = await fetch('/api/create-transaction', {
         method: 'POST',
@@ -20,38 +38,34 @@ const ComprasCarro = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: cartTotal, // Total amount to be charged
-          sessionId: 'some_unique_session_id', // This should be a unique session identifier
-          buyOrder: `ORDER-${Date.now()}`, // A unique order ID
-          returnUrl: `${window.location.origin}/api/return-url`, // Return URL after payment
+          amount: cartTotal,
+          sessionId: 'some_unique_session_id',
+          buyOrder: `ORDER-${Date.now()}`,
+          returnUrl: `${window.location.origin}/api/return-url`,
+          ...formData, // Include user data in the transaction creation request
         }),
       });
 
       const result = await response.json();
 
       if (response.ok) {
-        // Create a form element
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = result.url;
-      
-        // Create a hidden input for token_ws
+
         const tokenInput = document.createElement('input');
         tokenInput.type = 'hidden';
         tokenInput.name = 'token_ws';
         tokenInput.value = result.token;
-      
-        // Append the input to the form and submit it
+
         form.appendChild(tokenInput);
         document.body.appendChild(form);
         form.submit();
       } else {
         console.error('Payment initiation failed:', result.error);
-        // Handle the error (e.g., show an error message)
       }
     } catch (error) {
       console.error('Payment initiation failed:', error);
-      // Handle the error (e.g., show an error message)
     }
   };
 
@@ -66,7 +80,7 @@ const ComprasCarro = () => {
           const subsQuantity = cartItem ? cartItem.subscriptionQuantity : 0;
 
           return (
-            <li className={`relative rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] mb-6 `} key={item.id}>
+            <li className={`relative rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] mb-4 sm:mb-5 md:mb-6 lg:mb-7 `} key={item.id}>
               <div className={` w-full `}>
                 <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal `}>
                   <Link className={` no-underline hover:underline `} href={`/software?productId=${item.id}`}>{item.softNombr}</Link>
@@ -113,10 +127,26 @@ const ComprasCarro = () => {
           <img className={`object-center object-contain w-12 lg:w-7 h-auto lg:inline ${isEmpty ? `opacity-30` : `opacity-60`} mx-auto lg:mr-3 my-2 lg:my-0`} src={shoppingCartIcon.src} width="28" height="auto" alt="" />
           {isEmpty ? `Carro vacío` : `Total: $ ${new Intl.NumberFormat('es-CL').format(cartTotal)}`}
         </p>
-        <p
-          className={` text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl ml-0 md:ml-6 mt-6 px-4 py-3`}
-          onClick={handlePayment}
-          >Pagar aquí</p>
+
+        {/* The form implementation */}
+
+        <form>
+          <p className={` block mt-3 sm:mt-4 md:mt-5 lg:mt-6 overflow-hidden ml-0 md:ml-6 align-middle border-0 relative rounded-sm shadow-inner shadow-neutral-700 font-normal font-RobotoCondensed bg-white `}>
+            <input className={` block w-full p-2 bg-transparent text-xl lg:text-2xl text-left `} type='text' name='name' value={formData.name} onChange={handleInputChange} placeholder='Nombre' /></p>
+          {errors.name && (<p className={` block px-2 mt-1 ml-0 md:ml-6 text-red-500 text-md lg:text-lg text-left `}>{errors.name}</p>)}
+          <p className={` block mt-3 sm:mt-4 md:mt-5 lg:mt-6 overflow-hidden ml-0 md:ml-6 align-middle border-0 relative rounded-sm shadow-inner shadow-neutral-700 font-normal font-RobotoCondensed bg-white `}>
+            <input className={` block w-full p-2 bg-transparent text-xl lg:text-2xl text-left `} type='email' name='email' value={formData.email} onChange={handleInputChange} placeholder='Correo electrónico' /></p>
+          {errors.email && (<p className={` block px-2 mt-1 ml-0 md:ml-6 text-red-500 text-md lg:text-lg text-left `}>{errors.email}</p>)}
+          <p className={` block mt-3 sm:mt-4 md:mt-5 lg:mt-6 overflow-hidden ml-0 md:ml-6 align-middle border-0 relative rounded-sm shadow-inner shadow-neutral-700 font-normal font-RobotoCondensed bg-white `}>
+            <input className={` block w-full p-2 bg-transparent text-xl lg:text-2xl text-left `} type='email' name='confirmEmail' value={formData.confirmEmail} onChange={handleInputChange} placeholder='Confirme correo electrónico' /></p>
+          {errors.confirmEmail && (<p className={` block px-2 mt-1 ml-0 md:ml-6 text-red-500 text-md lg:text-lg text-left `}>{errors.confirmEmail}</p>)}
+          <p className={` block mt-3 sm:mt-4 md:mt-5 lg:mt-6 ml-0 md:ml-6`} >
+            <input className={` w-full text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl px-4 py-3 `} type='button' Value='Pagar aquí' onClick={handlePayment} />
+          </p>
+        </form>
+
+        {/* Form block's end */}
+
       </div>
     </div>
   );
