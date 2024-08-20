@@ -21,7 +21,7 @@ const ProductList = () => {
           const quantity = cartItem ? cartItem.quantity : 0;
           const subsQuantity = cartItem ? cartItem.subscriptionQuantity : 0;
           return (
-            <li className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
+            <li data-aos-once="true" data-aos='fade' className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
               <h3 className={` text-black text-opacity-80 text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
               <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight  `}>Categoría{softw.softCategs.length > 1 && `s`}:</h4>
               <p className={` grow text-md md:text-lg lg:text-xl font-Oswald text-black text-opacity-80 mb-4`} >

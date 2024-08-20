@@ -47,7 +47,7 @@ const PodructoDespliegue = ({ productId }) => {
     <div className={` grid grid-cols-1 md:grid-cols-2 md:gap-4 `}>
 
       <div>
-        <div className={` relative min-h-96 overflow-scroll shadow-inner bg-white `} style={!softw.softImags ? { backgroundImage: `url(${tempSoftImg.src})`, backgroundRepeat: `no-repeat`, backgroundPosition: `center center`, backgroundSize: `contain` } : undefined} >
+        <div data-aos-once="true" data-aos='fade' className={` relative min-h-96 overflow-scroll shadow-inner bg-white `} style={!softw.softImags ? { backgroundImage: `url(${tempSoftImg.src})`, backgroundRepeat: `no-repeat`, backgroundPosition: `center center`, backgroundSize: `contain` } : undefined} >
 
           {hasImages && (
             <>
@@ -96,7 +96,7 @@ const PodructoDespliegue = ({ productId }) => {
 
         {/* this is the block overlay that should appear as the user click the 'Leer más >>' */}
         {softw.softDescr && showFullDescription && (
-          <div className={` z-50 fixed top-0 left-0 w-screen h-screen p-2 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center `}>
+          <div data-aos-once="true" data-aos='zoom-in-up' className={` z-50 fixed top-0 left-0 w-screen h-screen p-2 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center `}>
 
             <div className={` relative flex max-w-[56rem] max-h-[calc(100vh-8rem)] rounded-md shadow-md shadow-[rgba(0,0,0,0.5)] bg-slate-200 `}>
               <div className={`relative p-3 flex flex-col gap-3`}>

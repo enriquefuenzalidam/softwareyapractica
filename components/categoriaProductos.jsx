@@ -23,7 +23,7 @@ const CategoriaProductos = ({ categoryId }) => {
           const subsQuantity = cartItem ? cartItem.subscriptionQuantity : 0;
 
           return (
-            <li className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
+            <li data-aos-once="true" data-aos='fade' className={`relative flex flex-col rounded-sm p-4 bg-white bg-opacity-40 shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
               <h3 className={` text-black text-opacity-80 text-xl md:text-2xl lg:text-3xl font-Oswald font-normal `}>
                 <Link className={` no-underline hover:underline `} href={`/software?productId=${softw.id}`}>{softw.softNombr}</Link>
               </h3>
