@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -22,6 +23,7 @@ const PagoResultado = () => {
   }, [compraExito, clearCart]);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <main className="font-Roboto">
       <FondoCabecera portada={false} />
       <section className={` relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-5 lg:px-6 `}>
@@ -46,6 +48,7 @@ const PagoResultado = () => {
         </div>
       </section>
     </main>
+    </Suspense>
   );
 
 };
