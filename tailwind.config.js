@@ -38,5 +38,3 @@ module.exports = {
     },
     plugins: [require('daisyui')]
 };
-
-export default config;
