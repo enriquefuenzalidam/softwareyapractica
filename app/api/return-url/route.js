@@ -38,6 +38,7 @@ export async function GET(req) {
 
   // Build the redirection URL
   const redirectUrl = new URL('/compraresultado', req.url);
+  // const redirectUrl = new URL('https://softwareya.cl/compraresultado');
   redirectUrl.searchParams.set('compraExito', success.toString());
   redirectUrl.searchParams.set('name', name);
   redirectUrl.searchParams.set('email', email);
