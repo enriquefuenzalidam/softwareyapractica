@@ -40,6 +40,7 @@ const ComprasCarro = () => {
           sessionId: 'some_unique_session_id', // This should be a unique session identifier
           buyOrder: `ORDER-${Date.now()}`, // A unique order ID
           returnUrl: `${window.location.origin}/api/return-url?name=${formData.name}&email=${formData.email}`, // Pass name and email
+          //  returnUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/api/return-url?name=${formData.name}&email=${formData.email}`,
         }),
       });
   
