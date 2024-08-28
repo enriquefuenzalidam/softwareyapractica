@@ -9,7 +9,13 @@ export async function POST(req) {
     const transaction = new WebpayPlus.Transaction();
     const createResponse = await transaction.create(buyOrder, sessionId, amount, returnUrl);
 
-    return new Response(JSON.stringify(createResponse), {
+    const transactionDate = new Date().toISOString(); // Capture the current date and time
+
+    return new Response(JSON.stringify({
+      ...createResponse,
+      buyOrder,  // Order number
+      transactionDate, // Transaction date
+    }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });

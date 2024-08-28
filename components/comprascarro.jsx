@@ -29,6 +29,9 @@ const ComprasCarro = () => {
   };
 
   const handlePayment = async () => {
+
+    if (!validateForm()) return;
+    
     try {
       const response = await fetch('/api/create-transaction', {
         method: 'POST',

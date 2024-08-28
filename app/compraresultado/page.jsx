@@ -9,6 +9,8 @@ const PagoResultado = () => {
   const [compraExito, setCompraExito] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [buyOrder, setBuyOrder] = useState('');
+  const [transactionDate, setTransactionDate] = useState('');
 
   const { clearCart } = useCartContext();
 
@@ -17,10 +19,14 @@ const PagoResultado = () => {
     const success = searchParams.get('compraExito');
     const userName = searchParams.get('name');
     const userEmail = searchParams.get('email');
+    const order = searchParams.get('buyOrder');
+    const date = searchParams.get('transactionDate');
 
     setCompraExito(success);
     setName(userName || '');
     setEmail(userEmail || '');
+    setBuyOrder(order || '');
+    setTransactionDate(date || '');
 
     if (success === 'true') {
       clearCart();
@@ -39,18 +45,18 @@ const PagoResultado = () => {
           <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40  `}>
             {compraExito === 'true' ? (
               <>
-                <h2 style={{ lineHeight: 1.6 }} className={` mx-auto mt-8 mb-3 text-center text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}>
-                  <span className={` font-medium `} >Gracias por la compra, {name}.</span><br />
-                  <span className={` font-light `} >Un mensaje ha sido enviado a la dirección de correo {email}.</span>
-                </h2>
+                <div style={{ lineHeight: 1.6 }} className={` mx-auto my-8 text-center text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}>
+                  <h2 className={` font-medium `} >Gracias, {name}. Su compra con número de orden {buyOrder} y fecha {new Date(transactionDate).toLocaleString()}, ha sido realizada con éxito.</h2>
+                  <h2 className={` font-light `} >Un mensaje ha sido enviado a la dirección de correo {email}.</h2>
+                </div>
                 <p className={` mx-auto mt-8 mb-3 text-center `}><Link className={` hover:tracking-wider inline-block mx-auto text-lg sm:text-lg md:text-xl text-sky-600 italic font-bold font-Roboto no-underline hover:-translate-y-1 transition-all ease-in-out `} href={HOME_URL} passHref>&#8249;&#8249; Volver al inicio</Link></p>
               </>
             ) : (
               <>
-                <h2 style={{ lineHeight: 1.6 }} className={` mx-auto my-8 text-center text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}>
-                  <span className={` font-medium `} >La compra no pudo ser procesada, {name}.</span><br />
-                  <span className={` font-light `} >Revisa los datos ingresados y el medio de pago.</span>
-                </h2>
+                <div style={{ lineHeight: 1.6 }} className={` mx-auto my-8 text-center text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}>
+                  <h2 className={` font-medium `} >Lo sentimos, {name}, su compra no pudo ser procesada. </h2>
+                  <h2 className={` font-light `} >Revisa los datos ingresados y el medio de pago.</h2>
+                </div>
                 <p className={` mx-auto mt-8 mb-3 text-center `}><Link className={` hover:tracking-wider inline-block mx-auto text-lg sm:text-lg md:text-xl text-sky-600 italic font-bold font-Roboto no-underline hover:-translate-y-1 transition-all ease-in-out `} href={CART_URL} passHref>&#8249;&#8249; Volver al carro</Link></p>
               </>
             )}
