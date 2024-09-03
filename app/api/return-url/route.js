@@ -38,6 +38,14 @@ export async function GET(req) {
     // Send email only if the transaction was successful
     if (success) {
       await sendConfirmationEmail(name, email, transactionData);
+
+      // Send notification email to admin
+      await sendConfirmationEmail(
+        'Admin', // Name of the admin (optional)
+        'latasoftchile@gmail.com', // Admin email address
+        transactionData,
+        true // Flag indicating this is for the admin
+      );
     }
 
   } catch (error) {
@@ -75,7 +83,7 @@ export async function GET(req) {
 
 }
 
-async function sendConfirmationEmail(name, email, transactionData) {
+async function sendConfirmationEmail(name, email, transactionData, isAdmin = false) {
   // Create a transporter object using SMTP transport
   let transporter = nodemailer.createTransport({
     host: 'mail.softwareya.cl', // Replace with your SMTP server details
@@ -91,9 +99,16 @@ async function sendConfirmationEmail(name, email, transactionData) {
   let mailOptions = {
     from: '"SoftwareYa" <sofwareyacompra@softwareya.cl>', // Sender address
     to: email, // List of receivers
-    subject: 'Confirmación de compra en SofwareYa', // Subject line
-    text: `Hola ${name},\n\nGracias por tu compra. Estos son los detalles de tu compra:\n\nNúmero de orden de compra: ${transactionData.buyOrder}\nFecha de la compra: ${transactionData.transactionDate}\n\nQue tengas un buen día.\nSoftwareYa` // Plain text body
   };
+
+  if (isAdmin) {
+    mailOptions.subject = `New Transaction Notification for Order ${transactionData.buyOrder}`;
+    mailOptions.text = `Admin,\n\nA new transaction has been completed successfully.\n\nOrder Number: ${transactionData.buyOrder}\nTransaction Date: ${transactionData.transactionDate}\n\nThis is a notification to inform you of the transaction.\nSoftwareYa`;
+  }
+  else {
+    mailOptions.subject = 'Confirmación de compra en SoftwareYa';
+    mailOptions.text = `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${transactionData.buyOrder}\nFecha de la compra: ${transactionData.transactionDate}\n\nQue tengas un buen día.\nSoftwareYa`;
+  }
 
   // Send mail with defined transport object
   await transporter.sendMail(mailOptions);
