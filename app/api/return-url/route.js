@@ -107,7 +107,7 @@ async function sendConfirmationEmail(name, email, transactionData, isAdmin = fal
   }
   else {
     mailOptions.subject = 'Confirmación de compra en SoftwareYa';
-    mailOptions.text = `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${transactionData.buyOrder}\nFecha de la compra: ${transactionData.transactionDate}\n\nQue tengas un buen día.\nSoftwareYa`;
+    mailOptions.text = `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${transactionData.buyOrder}\nFecha de la compra: ${transactionData.transactionDate}\n\nDetalles de los productos:\n${items.map(item => `Nombre: ${item.softNombr}\nCantidad: ${item.quantity}\nTipo: ${item.quantity > 0 ? 'Compra' : 'Suscripción'}\n\n`).join('')}\n\nQue tengas un buen día.\nSoftwareYa`;
   }
 
   // Send mail with defined transport object
