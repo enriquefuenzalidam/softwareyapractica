@@ -41,8 +41,8 @@ export async function GET(req) {
 
   // Send a second email to the admin
   await sendConfirmationEmail(
-    'Admin', // You can replace this with a dynamic value if needed
-    'enrique.fuenzalida@yahoo.cl', // Replace with the actual admin email
+    'Administrador', // You can replace this with a dynamic value if needed
+    'latasoftchile@gmail.com', // Replace with the actual admin email
     transactionData,
     true // Indicating this is for the admin email
   );
