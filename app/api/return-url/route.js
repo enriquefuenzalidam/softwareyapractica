@@ -39,13 +39,13 @@ export async function GET(req) {
     if (success) {
       await sendConfirmationEmail(name, email, transactionData);
 
-      // Send notification email to admin
-      await sendConfirmationEmail(
-        'Admin', // Name of the admin (optional)
-        'latasoftchile@gmail.com', // Admin email address
-        transactionData,
-        true // Flag indicating this is for the admin
-      );
+  // Send a second email to the admin
+  await sendConfirmationEmail(
+    'Admin', // You can replace this with a dynamic value if needed
+    'enrique.fuenzalida@yahoo.cl', // Replace with the actual admin email
+    transactionData,
+    true // Indicating this is for the admin email
+  );
     }
 
   } catch (error) {
@@ -102,12 +102,12 @@ async function sendConfirmationEmail(name, email, transactionData, isAdmin = fal
   };
 
   if (isAdmin) {
-    mailOptions.subject = `New Transaction Notification for Order ${transactionData.buyOrder}`;
-    mailOptions.text = `Admin,\n\nA new transaction has been completed successfully.\n\nOrder Number: ${transactionData.buyOrder}\nTransaction Date: ${transactionData.transactionDate}\n\nThis is a notification to inform you of the transaction.\nSoftwareYa`;
+    mailOptions.subject = `Notificación de transacción SoftwareYa - ${transactionData.buyOrder}`;
+    mailOptions.text = `Admin,\n\nSe ha realizado una nueva transacción.\n\nNúmero: ${transactionData.buyOrder}\nFecha de la transacción: ${transactionData.transactionDate}\n\nSoftwareYa`;
   }
   else {
-    mailOptions.subject = 'Confirmación de compra en SoftwareYa';
-    mailOptions.text = `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${transactionData.buyOrder}\nFecha de la compra: ${transactionData.transactionDate}\n\nDetalles de los productos:\n${items.map(item => `Nombre: ${item.softNombr}\nCantidad: ${item.quantity}\nTipo: ${item.quantity > 0 ? 'Compra' : 'Suscripción'}\n\n`).join('')}\n\nQue tengas un buen día.\nSoftwareYa`;
+    mailOptions.subject = 'Confirmación de compra en SofwareYa';
+    mailOptions.text = `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${transactionData.buyOrder}\nFecha de la compra: ${transactionData.transactionDate}\n\nQue tengas un buen día.\nSoftwareYa`;
   }
 
   // Send mail with defined transport object
