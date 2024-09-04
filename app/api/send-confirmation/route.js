@@ -27,12 +27,12 @@ export async function POST(req) {
         });
         */
         let transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: process.env.SMTP_PORT,
+            host: 'mail.softwareya.cl',
+            port: 587,
             secure: false, // true for port 465, false for port 587
             auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASS,
+                user:'sofwareyacompra@softwareya.cl',
+                pass: 'JDG35TuZU52rrBNFy7Td',
             },
         });
 
@@ -75,12 +75,6 @@ export async function POST(req) {
             subject: `Notificación de transacción SoftwareYa - ${buyOrder}`,
             text: `Admin,\n\nSe ha realizado una nueva transacción.\n\nNúmero: ${buyOrder}\nFecha de la transacción: ${transactionDate}\n\n${purchaseDetails}`,
         };
-
-        console.log('SMTP_HOST:', process.env.SMTP_HOST);
-        console.log('SMTP_PORT:', process.env.SMTP_PORT);
-        console.log('SMTP_USER:', process.env.SMTP_USER);
-        console.log('SMTP_PASS:', process.env.SMTP_PASS);
-        
 
         // Send both emails
         console.log('Sending email to buyer:', buyerMailOptions);
