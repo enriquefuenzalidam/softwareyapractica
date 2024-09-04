@@ -38,7 +38,7 @@ export async function POST(req) {
             }
 
             if (item.subscriptionQuantity > 0) {
-                purchaseDetails += `${item.softNombr}\n${item.subscriptionQuantity} subscripción${item.subscriptionQuantity > 1 ? 'es' : ''} por $${item.softMensSub} cada una.\n`;
+                purchaseDetails += `\n${item.softNombr}\n${item.subscriptionQuantity} subscripción${item.subscriptionQuantity > 1 ? 'es' : ''} por $${item.softMensSub} cada una.\n`;
             }
 
             totalPurchase += purchaseTotal;
