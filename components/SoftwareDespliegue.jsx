@@ -1,3 +1,4 @@
+import React from 'react';
 import { useCartContext } from '../app/context/CartContext';
 import { useState } from 'react';
 import softwLista from 'data/softwLista.json';
@@ -128,7 +129,7 @@ const PodructoDespliegue = ({ productId }) => {
           {softw.softCategs.map((categId, index) => {
             const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
             const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
-            return (<><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</>);
+            return (<React.Fragment key={categId}><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</React.Fragment>);
           })}.
         </p>
 

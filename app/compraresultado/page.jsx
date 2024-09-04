@@ -18,7 +18,7 @@ const PagoResultado = () => {
   const sendCartDataToBackend = useCallback(async (name, email, buyOrder, transactionDate, items) => {
     console.log('Attempting to send cart data to backend');
     try {
-      await fetch('/api/send-confirmation', {
+      const response = await fetch('/api/send-confirmation', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

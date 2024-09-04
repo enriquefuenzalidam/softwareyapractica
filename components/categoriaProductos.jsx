@@ -1,3 +1,5 @@
+
+import React from 'react';
 import { useCartContext } from '../app/context/CartContext';
 import Link from 'next/link';
 import softwLista from 'data/softwLista.json';
@@ -33,7 +35,7 @@ const CategoriaProductos = ({ categoryId }) => {
                   const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
                   const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
                   return (
-                    <><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</>);
+                    <React.Fragment key={categId}><Link className={` no-underline hover:underline`} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>{categoryName}</Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}</React.Fragment>);
                 }
                 )}.
               </p>
