@@ -14,18 +14,6 @@ export async function POST(req) {
             return new Response(JSON.stringify({ success: false, message: "No items to process." }), { status: 400 });
         }
 
-        // Define transporter for nodemailer
-        /*
-        let transporter = nodemailer.createTransport({
-          host: 'mail.softwareya.cl',
-          port: 587,
-          secure: false,
-          auth: {
-            user: 'sofwareyacompra@softwareya.cl',
-            pass: 'JDG35TuZU52rrBNFy7Td', // Replace with your password
-          },
-        });
-        */
         let transporter = nodemailer.createTransport({
             host: 'mail.softwareya.cl',
             port: 587,

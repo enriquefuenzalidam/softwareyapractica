@@ -43,7 +43,7 @@ const PagoResultado = () => {
       }
 
     } catch (error) {
-      console.error('Error sending confirmation email:', error);
+      console.error('Catch error sending confirmation email:', error);
     }
   }, [clearCart]);
 
