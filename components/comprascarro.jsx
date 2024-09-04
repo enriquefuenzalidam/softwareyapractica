@@ -29,10 +29,12 @@ const ComprasCarro = () => {
   };
 
   const handlePayment = async () => {
-
     if (!validateForm()) return;
     
     try {
+      // Store cart items in sessionStorage
+      sessionStorage.setItem('cartItems', JSON.stringify(items));
+
       const response = await fetch('/api/create-transaction', {
         method: 'POST',
         headers: {
@@ -144,7 +146,7 @@ const ComprasCarro = () => {
             <input className={` block w-full p-2 bg-transparent text-xl lg:text-2xl text-left `} type='email' name='confirmEmail' value={formData.confirmEmail} onChange={handleInputChange} placeholder='Confirme correo electrónico' /></p>
           {errors.confirmEmail && (<p className={` block px-2 mt-1 ml-0 md:ml-6 text-red-500 text-md lg:text-lg text-left `}>{errors.confirmEmail}</p>)}
           <p className={` block mt-3 sm:mt-4 md:mt-5 lg:mt-6 ml-0 md:ml-6`} >
-            <input className={` w-full text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl px-4 py-3 `} type='button' Value='Pagar aquí' onClick={handlePayment} />
+            <input className={` w-full text-center bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black rounded-md text-white font-semibold font-RobotoCondensed cursor-pointer text-opacity-70 hover:text-opacity-100  text-xl lg:text-2xl px-4 py-3 `} type='button' value='Pagar aquí' onClick={handlePayment} />
           </p>
         </form>
 

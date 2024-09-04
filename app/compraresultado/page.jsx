@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useCartContext } from '../context/CartContext';
 import FondoCabecera from '/components/fondoCabecera';
@@ -11,8 +11,41 @@ const PagoResultado = () => {
   const [email, setEmail] = useState('');
   const [buyOrder, setBuyOrder] = useState('');
   const [transactionDate, setTransactionDate] = useState('');
+  const [cartItems, setCartItems] = useState([]);
 
   const { clearCart } = useCartContext();
+
+  const sendCartDataToBackend = useCallback(async (name, email, buyOrder, transactionDate, items) => {
+    console.log('Attempting to send cart data to backend');
+    try {
+      await fetch('/api/send-confirmation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          buyOrder,
+          transactionDate,
+          items, // Send the cart items to the backend
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        // Only clear the cart after email is successfully sent
+        console.log('Emails sent successfully, clearing cart'); 
+        clearCart();
+      } else {
+        console.error('Error sending confirmation email:', result.error);
+      }
+
+    } catch (error) {
+      console.error('Error sending confirmation email:', error);
+    }
+  }, [clearCart]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -22,16 +55,33 @@ const PagoResultado = () => {
     const order = searchParams.get('buyOrder');
     const date = searchParams.get('transactionDate');
 
-    setCompraExito(success);
+    setCompraExito(success || '');
     setName(userName || '');
     setEmail(userEmail || '');
     setBuyOrder(order || '');
     setTransactionDate(date || '');
 
-    if (success === 'true') {
-      clearCart();
+    // Retrieve cart items from sessionStorage
+    const savedCartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+    if (savedCartItems) {
+      console.log('setting cart items');
+      setCartItems(savedCartItems || []); // Set cart items directly from array
     }
-  }, []);
+
+    console.log('Session Storage:', sessionStorage.getItem('cartItems'));
+    if (success === true) console.log('success true condition');
+    else if (success === 'true') console.log('success `ttrue` condition');
+    else console.log('No success true condition');
+    if (savedCartItems) console.log('savedCartItems condition');
+    else console.log('No savedCartItems condition');
+    if (savedCartItems) console.log('savedCartItems condition');
+    else console.log('No savedCartItems condition');
+
+    if (success === 'true' || success === true ) {
+      console.log('sending data to backend');
+      if (savedCartItems.length > 0 ) sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
+    } else console.log('fail on success true and cart to backend sending try');
+  }, [sendCartDataToBackend]);
 
   if (compraExito === null) {
     return <div>Loading...</div>;
@@ -46,7 +96,7 @@ const PagoResultado = () => {
             {compraExito === 'true' ? (
               <>
                 <div style={{ lineHeight: 1.6 }} className={` mx-auto my-8 text-center text-xl sm:text-2xl md:text-3xl uppercase text-[#261b5b] text-opacity-100 font-Oswald `}>
-                  <h2 className={` font-medium `} >Gracias, {name}. Su compra con número de orden {buyOrder} y fecha {new Date(transactionDate).toLocaleString()}, ha sido realizada con éxito.</h2>
+                  <h2 className={` font-medium `} >Gracias, {name}. Su compra con número {buyOrder} y fecha {new Date(transactionDate).toLocaleString()}, ha sido realizada con éxito.</h2>
                   <h2 className={` font-light `} >Un mensaje ha sido enviado a la dirección de correo {email}.</h2>
                 </div>
                 <p className={` mx-auto mt-8 mb-3 text-center `}><Link className={` hover:tracking-wider inline-block mx-auto text-lg sm:text-lg md:text-xl text-sky-600 italic font-bold font-Roboto no-underline hover:-translate-y-1 transition-all ease-in-out `} href={HOME_URL} passHref>&#8249;&#8249; Volver al inicio</Link></p>

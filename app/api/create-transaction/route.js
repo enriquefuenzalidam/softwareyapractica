@@ -5,7 +5,7 @@ configureTransbank();
 
 export async function POST(req) {
   try {
-    const { amount, sessionId, buyOrder, returnUrl } = await req.json();
+    const { amount, sessionId, buyOrder, returnUrl, items } = await req.json();
     const transaction = new WebpayPlus.Transaction();
     const createResponse = await transaction.create(buyOrder, sessionId, amount, returnUrl);
 
@@ -15,6 +15,7 @@ export async function POST(req) {
       ...createResponse,
       buyOrder,  // Order number
       transactionDate, // Transaction date
+      items, // Include the items in the response so they can be passed later
     }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

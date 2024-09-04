@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "@netlify/blobs": "^8.0.0",
-        "@netlify/plugin-nextjs": "^5.6.0",
+        "@netlify/plugin-nextjs": "^5.7.0",
         "aos": "^2.3.4",
         "blobshape": "^1.0.0",
         "bright": "^0.8.5",
