@@ -74,12 +74,10 @@ const PagoResultado = () => {
     else console.log('No success true condition');
     if (savedCartItems) console.log('savedCartItems condition');
     else console.log('No savedCartItems condition');
-    if (savedCartItems) console.log('savedCartItems condition');
-    else console.log('No savedCartItems condition');
 
-    if (success === 'true' || success === true ) {
+    if (savedCartItems.length > 0 ) {
       console.log('sending data to backend');
-      if (savedCartItems.length > 0 ) sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
+      if (success === 'true' || success === true ) sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
     } else console.log('fail on success true and cart to backend sending try');
   }, [sendCartDataToBackend]);
 
