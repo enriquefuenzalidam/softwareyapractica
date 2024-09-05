@@ -12,6 +12,7 @@ const PagoResultado = () => {
   const [buyOrder, setBuyOrder] = useState('');
   const [transactionDate, setTransactionDate] = useState('');
   const [cartItems, setCartItems] = useState([]);
+  const [emailSent, setEmailSent] = useState(false);
 
   const { clearCart } = useCartContext();
 
@@ -33,11 +34,13 @@ const PagoResultado = () => {
       });
 
       const result = await response.json();
-      
+
       if (response.ok && result.success) {
         // Only clear the cart after email is successfully sent
-        console.log('Emails sent successfully, clearing cart'); 
+        console.log(' Emails sent successfully, clearing cart ');
         clearCart();
+        console.log(' Setting emailSent to true ');
+        setEmailSent(true);
       } else {
         console.error('Error sending confirmation email:', result.error);
       }
@@ -48,38 +51,42 @@ const PagoResultado = () => {
   }, [clearCart]);
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const success = searchParams.get('compraExito');
-    const userName = searchParams.get('name');
-    const userEmail = searchParams.get('email');
-    const order = searchParams.get('buyOrder');
-    const date = searchParams.get('transactionDate');
+    if (!emailSent) {
+      const searchParams = new URLSearchParams(window.location.search);
+      const success = searchParams.get('compraExito');
+      const userName = searchParams.get('name');
+      const userEmail = searchParams.get('email');
+      const order = searchParams.get('buyOrder');
+      const date = searchParams.get('transactionDate');
 
-    setCompraExito(success || '');
-    setName(userName || '');
-    setEmail(userEmail || '');
-    setBuyOrder(order || '');
-    setTransactionDate(date || '');
+      setCompraExito(success || '');
+      setName(userName || '');
+      setEmail(userEmail || '');
+      setBuyOrder(order || '');
+      setTransactionDate(date || '');
 
-    // Retrieve cart items from sessionStorage
-    const savedCartItems = JSON.parse(sessionStorage.getItem('cartItems'));
-    if (savedCartItems) {
-      console.log('setting cart items');
-      setCartItems(savedCartItems || []); // Set cart items directly from array
+      // Retrieve cart items from sessionStorage
+      const savedCartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+      if (savedCartItems) {
+        console.log('setting cart items');
+        setCartItems(savedCartItems || []); // Set cart items directly from array
+      }
+
+      console.log('Session Storage:', sessionStorage.getItem('cartItems'));
+      if (success === true) console.log('success true condition');
+      else if (success === 'true') console.log('success `ttrue` condition');
+      else console.log('No success true condition');
+      if (savedCartItems) console.log('savedCartItems condition');
+      else console.log('No savedCartItems condition');
+
+      if (savedCartItems.length > 0 && !emailSent) {
+        console.log('sending data to backend');
+        if (success === 'true' || success === true) {
+          sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
+        }
+      } else console.log('fail on success true and cart to backend sending try');
     }
-
-    console.log('Session Storage:', sessionStorage.getItem('cartItems'));
-    if (success === true) console.log('success true condition');
-    else if (success === 'true') console.log('success `ttrue` condition');
-    else console.log('No success true condition');
-    if (savedCartItems) console.log('savedCartItems condition');
-    else console.log('No savedCartItems condition');
-
-    if (savedCartItems.length > 0 ) {
-      console.log('sending data to backend');
-      if (success === 'true' || success === true ) sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
-    } else console.log('fail on success true and cart to backend sending try');
-  }, [sendCartDataToBackend]);
+  }, [sendCartDataToBackend, emailSent]);
 
   if (compraExito === null) {
     return <div>Loading...</div>;
