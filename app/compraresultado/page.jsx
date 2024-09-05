@@ -13,6 +13,8 @@ const PagoResultado = () => {
   const [transactionDate, setTransactionDate] = useState('');
   const [cartItems, setCartItems] = useState([]);
   const [emailSent, setEmailSent] = useState(false);
+  const [emailSendingCounter, setEmailSendingCounter] = useState(0);
+
 
   const { clearCart } = useCartContext();
 
@@ -79,11 +81,10 @@ const PagoResultado = () => {
       if (savedCartItems) console.log('savedCartItems condition');
       else console.log('No savedCartItems condition');
 
-      if (savedCartItems.length > 0 && !emailSent) {
-        console.log('sending data to backend');
-        if (success === 'true' || success === true) {
-          sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
-        }
+      if ( !emailSent && savedCartItems.length > 0 && (success === 'true' || success === true)) {
+        console.log('sending data to backend' + emailSendingCounter);
+        sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
+        setEmailSendingCounter((prevCount) => prevCount + 1);
       } else console.log('fail on success true and cart to backend sending try');
     }
   }, [sendCartDataToBackend, emailSent]);
