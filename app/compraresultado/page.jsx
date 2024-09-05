@@ -41,8 +41,6 @@ const PagoResultado = () => {
         // Only clear the cart after email is successfully sent
         console.log(' Emails sent successfully, clearing cart ');
         clearCart();
-        console.log(' Setting emailSent to true ');
-        setEmailSent(true);
       } else {
         console.error('Error sending confirmation email:', result.error);
       }
@@ -83,9 +81,17 @@ const PagoResultado = () => {
 
       if ( !emailSent && savedCartItems.length > 0 && (success === 'true' || success === true)) {
         console.log('sending data to backend' + emailSendingCounter);
-        sendCartDataToBackend(userName, userEmail, order, date, savedCartItems);
-        setEmailSendingCounter((prevCount) => prevCount + 1);
-      } else console.log('fail on success true and cart to backend sending try');
+        sendCartDataToBackend(userName, userEmail, order, date, savedCartItems)
+        .then(() =>{
+          console.log(' Setting emailSent to true ');
+          setEmailSent(true);
+          console.log(' Increasing the emailSendingCounter ');
+          setEmailSendingCounter((prevCount) => prevCount + 1);
+        })
+        .catch((error) => {
+          console.error('Error sending data:', error);
+        });
+      } else console.log('fail on success true and cart sending to backend try');
     }
   }, [sendCartDataToBackend, emailSent]);
 
