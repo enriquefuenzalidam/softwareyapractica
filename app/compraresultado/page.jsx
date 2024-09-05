@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, useEffect, useState, useCallback } from 'react';
+import { Suspense, useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useCartContext } from '../context/CartContext';
 import FondoCabecera from '/components/fondoCabecera';
