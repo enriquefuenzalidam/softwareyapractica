@@ -34,11 +34,11 @@ export async function POST(req) {
             const subscriptionTotal = item.softMensSub ? item.softMensSub * (item.subscriptionQuantity || 0) : 0;
 
             if (item.quantity > 0) {
-                purchaseDetails += `${item.softNombr}\n${item.quantity} unidad${item.quantity > 1 ? 'es' : ''} por $${item.softPrec} cada una.\n`;
+                purchaseDetails += `${item.softNombr}\n${item.quantity} unidad${item.quantity > 1 ? 'es' : ''} por $${item.softPrec} cada una.\n\n`;
             }
 
             if (item.subscriptionQuantity > 0) {
-                purchaseDetails += `\n${item.softNombr}\n${item.subscriptionQuantity} subscripción${item.subscriptionQuantity > 1 ? 'es' : ''} por $${item.softMensSub} cada una.\n`;
+                purchaseDetails += `${item.softNombr}\n${item.subscriptionQuantity} subscripción${item.subscriptionQuantity > 1 ? 'es' : ''} por $${item.softMensSub} cada una.\n\n`;
             }
 
             totalPurchase += purchaseTotal;
@@ -46,14 +46,14 @@ export async function POST(req) {
         });
 
         const totalPaid = totalPurchase + totalSubscription;
-        purchaseDetails += `\nTotal compras: $${totalPurchase}\nTotal subscripciones: $${totalSubscription}\nTotal pagado: $${totalPaid}\n`;
+        purchaseDetails += `Total compras: $${totalPurchase}\nTotal subscripciones: $${totalSubscription}\nTotal pagado: $${totalPaid}\n`;
 
         // Send email to buyer
         let buyerMailOptions = {
             from: '"SoftwareYa" <sofwareyacompra@softwareya.cl>',
             to: email,
             subject: `Confirmación de compra en SoftwareYa - ${buyOrder}`,
-            text: `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${buyOrder}\nFecha de la compra: ${transactionDate}\n\n${purchaseDetails}\nQue tengas un buen día.\nSoftwareYa\n\nEnviado desde Netlify`,
+            text: `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${buyOrder}\nFecha de la compra: ${transactionDate}\n\n${purchaseDetails}\n\nQue tengas un buen día.\nSoftwareYa\n\nEnviado desde Netlify`,
         };
 
         // Send email to admin

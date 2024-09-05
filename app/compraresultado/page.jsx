@@ -6,6 +6,8 @@ import FondoCabecera from '/components/fondoCabecera';
 import { HOME_URL, CART_URL } from '/lib/urls';
 
 const PagoResultado = () => {
+
+  console.log('Setting constants ');
   const [compraExito, setCompraExito] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,8 +16,7 @@ const PagoResultado = () => {
   const [cartItems, setCartItems] = useState([]);
   const [emailSent, setEmailSent] = useState(false);
   const [emailSendingCounter, setEmailSendingCounter] = useState(0);
-
-
+  const [cartDataToBackendCounter, setCartDataToBackendCounter] = useState(0);
   const { clearCart } = useCartContext();
 
   const sendCartDataToBackend = useCallback(async (name, email, buyOrder, transactionDate, items) => {
@@ -35,19 +36,21 @@ const PagoResultado = () => {
         }),
       });
 
+      console.log(' await response.json() ');
       const result = await response.json();
 
       if (response.ok && result.success) {
         // Only clear the cart after email is successfully sent
-        console.log(' Emails sent successfully, clearing cart ');
+        console.log('Emails sent successfully ' + emailSendingCounter + ', clearing cart ');
         clearCart();
-      } else {
-        console.error('Error sending confirmation email:', result.error);
-      }
 
-    } catch (error) {
-      console.error('Catch error sending confirmation email:', error);
-    }
+        console.log('Increasing the emailSendingCounter ');
+        setEmailSendingCounter((prevCount) => prevCount + 1);
+
+      } else { console.error('Error sending confirmation email:', result.error); }
+
+    } catch (error) { console.error('Catch error sending confirmation email:', error); }
+
   }, [clearCart]);
 
   useEffect(() => {
@@ -74,19 +77,22 @@ const PagoResultado = () => {
 
       console.log('Session Storage:', sessionStorage.getItem('cartItems'));
       if (success === true) console.log('success true condition');
-      else if (success === 'true') console.log('success `ttrue` condition');
+      else if (success === 'true') console.log('success ttrue condition');
       else console.log('No success true condition');
       if (savedCartItems) console.log('savedCartItems condition');
       else console.log('No savedCartItems condition');
 
       if ( !emailSent && savedCartItems.length > 0 && (success === 'true' || success === true)) {
-        console.log('sending data to backend' + emailSendingCounter);
+        console.log('sending data to backend ' + cartDataToBackendCounter);
         sendCartDataToBackend(userName, userEmail, order, date, savedCartItems)
         .then(() =>{
+
           console.log(' Setting emailSent to true ');
           setEmailSent(true);
+
           console.log(' Increasing the emailSendingCounter ');
-          setEmailSendingCounter((prevCount) => prevCount + 1);
+          setCartDataToBackendCounter((prevCount) => prevCount + 1);
+
         })
         .catch((error) => {
           console.error('Error sending data:', error);
