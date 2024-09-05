@@ -18,6 +18,7 @@ const PagoResultado = () => {
   const [emailSendingCounter, setEmailSendingCounter] = useState(0);
   const [cartDataToBackendCounter, setCartDataToBackendCounter] = useState(0);
   const { clearCart } = useCartContext();
+  const effectRunOnce = useRef(false); // Track if effect has run once
 
   const sendCartDataToBackend = useCallback(async (name, email, buyOrder, transactionDate, items) => {
     console.log('Attempting to send cart data to backend');
@@ -54,6 +55,7 @@ const PagoResultado = () => {
   }, [clearCart]);
 
   useEffect(() => {
+    if (effectRunOnce.current) return; // Prevent multiple runs of this effect
     if (!emailSent) {
       const searchParams = new URLSearchParams(window.location.search);
       const success = searchParams.get('compraExito');
@@ -98,6 +100,7 @@ const PagoResultado = () => {
           console.error('Error sending data:', error);
         });
       } else console.log('fail on success true and cart sending to backend try');
+      effectRunOnce.current = true; // Mark effect as run
     }
   }, [sendCartDataToBackend, emailSent]);
 

@@ -46,7 +46,7 @@ export async function POST(req) {
         });
 
         const totalPaid = totalPurchase + totalSubscription;
-        purchaseDetails += `Total compras: $${totalPurchase}\nTotal subscripciones: $${totalSubscription}\nTotal pagado: $${totalPaid}\n`;
+        purchaseDetails += `Total compras: $${totalPurchase}\nTotal subscripciones: $${totalSubscription}\nTotal pagado: $${totalPaid}`;
 
         // Send email to buyer
         let buyerMailOptions = {
