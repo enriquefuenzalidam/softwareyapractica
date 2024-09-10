@@ -53,7 +53,7 @@ export async function POST(req) {
             from: '"SoftwareYa" <sofwareyacompra@softwareya.cl>',
             to: email,
             subject: `Confirmación de compra en SoftwareYa - ${buyOrder}`,
-            text: `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${buyOrder}\nFecha de la compra: ${transactionDate}\n\n${purchaseDetails}\n\nQue tengas un buen día.\nSoftwareYa\n\nEnviado desde Netlify`,
+            text: `Hola, ${name},\n\nGracias por tu compra. Estos son los detalles de tu orden:\n\nNúmero: ${buyOrder}\nFecha de la compra: ${transactionDate}\n\n${purchaseDetails}\n\nQue tengas un buen día.\nSoftwareYa\n\n`,
         };
 
         // Send email to admin
@@ -61,7 +61,7 @@ export async function POST(req) {
             from: '"SoftwareYa" <sofwareyacompra@softwareya.cl>',
             to: 'latasoftchile@gmail.com', // Replace with the actual admin email
             subject: `Notificación de transacción SoftwareYa - ${buyOrder}`,
-            text: `Administrador,\n\nSe ha realizado una nueva transacción.\n\nNúmero: ${buyOrder}\nFecha de la transacción: ${transactionDate}\n\n${purchaseDetails}\n\nEnviado desde Netlify`,
+            text: `Administrador,\n\nSe ha efectuado una nueva compra, realizada por ${name}, correo electrónico ${email}.\n\nNúmero: ${buyOrder}\nFecha de la transacción: ${transactionDate}\n\n${purchaseDetails}\n\n`,
         };
 
         // Send both emails

@@ -8,7 +8,7 @@ const SoftwarePage = () => {
   const { isEmpty } = useCartContext();
 
   return (
-    <main className="font-Roboto">
+    <main className="font-Roboto flex-grow  ">
       <FondoCabecera portada={false} />
       <section className={` relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-5 lg:px-6 `}>
           <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40  `}>
