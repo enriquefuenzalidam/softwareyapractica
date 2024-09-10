@@ -59,9 +59,9 @@ export async function POST(req) {
         // Send email to admin
         let adminMailOptions = {
             from: '"SoftwareYa" <sofwareyacompra@softwareya.cl>',
-            to: 'enrique.fuenzalida@yahoo.cl', // Replace with the actual admin email
+            to: 'latasoftchile@gmail.com', // Replace with the actual admin email
             subject: `Notificación de transacción SoftwareYa - ${buyOrder}`,
-            text: `Admin,\n\nSe ha realizado una nueva transacción.\n\nNúmero: ${buyOrder}\nFecha de la transacción: ${transactionDate}\n\n${purchaseDetails}\n\nEnviado desde Netlify`,
+            text: `Administrador,\n\nSe ha realizado una nueva transacción.\n\nNúmero: ${buyOrder}\nFecha de la transacción: ${transactionDate}\n\n${purchaseDetails}\n\nEnviado desde Netlify`,
         };
 
         // Send both emails
