@@ -40,10 +40,10 @@ export async function GET(req) {
   }
 
   // redirection local
-  const redirectUrl = new URL('/compraresultado', req.url);
+  // const redirectUrl = new URL('/compraresultado', req.url);
 
   // redirection at hosting
-  // const redirectUrl = new URL('https://softwareya.cl/compraresultado');
+  const redirectUrl = new URL('https://softwareya.cl/compraresultado');
 
   redirectUrl.searchParams.set('compraExito', success.toString());
   redirectUrl.searchParams.set('name', name);

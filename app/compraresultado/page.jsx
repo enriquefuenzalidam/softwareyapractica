@@ -15,8 +15,8 @@ const PagoResultado = () => {
   const [transactionDate, setTransactionDate] = useState('');
   const [cartItems, setCartItems] = useState([]);
   const [emailSent, setEmailSent] = useState(false);
-  const [emailSendingCounter, setEmailSendingCounter] = useState(0);
-  const [cartDataToBackendCounter, setCartDataToBackendCounter] = useState(0);
+  // const [emailSendingCounter, setEmailSendingCounter] = useState(0);
+  // const [cartDataToBackendCounter, setCartDataToBackendCounter] = useState(0);
   const { clearCart } = useCartContext();
   const effectRunOnce = useRef(false); // Track if effect has run once
 
@@ -42,11 +42,11 @@ const PagoResultado = () => {
 
       if (response.ok && result.success) {
         // Only clear the cart after email is successfully sent
-        console.log('Emails sent successfully ' + emailSendingCounter + ', clearing cart ');
+        // console.log('Emails sent successfully ' + emailSendingCounter + ', clearing cart ');
         clearCart();
 
-        console.log('Increasing the emailSendingCounter ');
-        setEmailSendingCounter((prevCount) => prevCount + 1);
+        // console.log('Increasing the emailSendingCounter ');
+        // setEmailSendingCounter((prevCount) => prevCount + 1);
 
       } else { console.error('Error sending confirmation email:', result.error); }
 
@@ -85,15 +85,15 @@ const PagoResultado = () => {
       else console.log('No savedCartItems condition');
 
       if ( !emailSent && savedCartItems.length > 0 && (success === 'true' || success === true)) {
-        console.log('sending data to backend ' + cartDataToBackendCounter);
+        // console.log('sending data to backend ' + cartDataToBackendCounter);
         sendCartDataToBackend(userName, userEmail, order, date, savedCartItems)
         .then(() =>{
 
           console.log(' Setting emailSent to true ');
           setEmailSent(true);
 
-          console.log(' Increasing the emailSendingCounter ');
-          setCartDataToBackendCounter((prevCount) => prevCount + 1);
+          // console.log(' Increasing the emailSendingCounter ');
+          // setCartDataToBackendCounter((prevCount) => prevCount + 1);
 
         })
         .catch((error) => {
