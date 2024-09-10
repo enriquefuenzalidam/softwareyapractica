@@ -13,7 +13,7 @@ const SoftwareCategoria = () => {
   const { cartTotal, isEmpty } = useCartContext();
 
   return (
-    <main className={`font-Roboto`}>
+    <main className={`font-Roboto flex-grow`}>
       <FondoCabecera portada={false} />
       <section className={`relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 pt-3 sm:pt-4 md:pt-5 lg:pt-6 px-3 sm:px-4 md:px-5 lg:px-6`}>
         <div className={` relative text-right max-w-5xl mx-auto `}>
