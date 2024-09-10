@@ -41,6 +41,7 @@ const PagoResultado = () => {
       const result = await response.json();
 
       if (response.ok && result.success) {
+
         // Only clear the cart after email is successfully sent
         // console.log('Emails sent successfully ' + emailSendingCounter + ', clearing cart ');
         clearCart();
