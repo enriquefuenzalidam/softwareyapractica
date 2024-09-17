@@ -99,14 +99,14 @@ const PodructoDespliegue = ({ productId }) => {
         {softw.softDescr && showFullDescription && (
           <div data-aos-once="true" data-aos='fade' className={` z-50 fixed top-0 left-0 w-screen h-screen p-2 sm:p-4 md:p-6 lg:p-8 flex items-center justify-center `}>
 
-            <div className={` relative flex max-w-[56rem] max-h-[calc(100vh-8rem)] rounded-md shadow-md shadow-[rgba(0,0,0,0.5)] bg-gradient-to-b from-[rgb(222,231,235)] to-[#FCF5E9]  `}>
+            <div className={` relative flex max-w-[56rem] max-h-[calc(100vh-8rem)] rounded-r-3xl rounded-l-md shadow-md shadow-[rgba(0,0,0,0.5)] bg-gradient-to-b from-[rgb(222,231,235)] to-[#FCF5E9]  `}>
               <div className={`relative p-3 flex flex-col gap-3`}>
                 <div
-                  className={` p-6 grow overflow-scroll tracking-tight hyphens-auto font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl   ]`}
+                  className={` scrollbar-always-visible p-6 grow overflow-scroll tracking-tight hyphens-auto font-RobotoCondensed font-light text-lg sm:text-xl md:text-xl   ]`}
                   dangerouslySetInnerHTML={{
                     __html: `<h3 class="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold mb-4">` + (softw.softNombr) + `</h3><p class=" my-2">` + (softw.softDescr).replace(/\n/g, `</p><p class=" my-2">`) + `</p>`,
                   }} />
-                <p className={` text-center `}><span className=" z-50 bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-md text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 transition-all ease-in-out duration-300 " onClick={handleCloseOverlay}>Cerrar</span></p>
+                <p className={` text-center `}><span className=" z-50 bg-sky-800 shadow-md shadow-[rgba(0,0,0,0.5)] hover:shadow-black px-4 py-1 rounded-t-md rounded-b-xl text-white font-semibold font-RobotoCondensed text-lg md:text-xl cursor-pointer text-opacity-70 hover:text-opacity-100 transition-all ease-in-out duration-300 " onClick={handleCloseOverlay}>Cerrar</span></p>
               </div>
             </div>
           </div>

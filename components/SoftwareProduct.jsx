@@ -22,7 +22,7 @@ const SoftwareProduct = () => {
   }
 
   return (
-    <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl rounded-l-lg rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgb(217,239,252,0.5)] to-[rgb(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)]  `}>
+    <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl rounded-l-lg rounded-r-3xl bg-gradient-to-b from-[rgb(217,239,252,0.5)] to-[rgb(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)]  `}>
       <SoftwareDespliegue productId={numericProductId} />
     </div>
   );

@@ -24,7 +24,7 @@ export default function Home() {
               </span>
             </Link>
           </div>
-          <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-white bg-opacity-40 `}>
+          <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-gradient-to-b from-[rgba(255,255,255,0.6)] to-transparent  `}>
           
             <h2 className={` mx-auto mb-8  max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase font-Oswald `} ><span className={`font-normal text-[#261b5b]`}>Encuentra el</span> <span className={`font-medium text-[#2184b6] `}>software que buscas</span></h2>
             <ProductList />

@@ -38,3 +38,31 @@ a {
 .btn:disabled {
     @apply text-neutral-400 bg-neutral-700;
 }
+
+
+/* styles/global.css */
+/* Ensure you include this in your Tailwind config or global styles */
+.scrollbar-always-visible {
+    overflow-y: scroll; /* Ensures vertical scrollbar is always visible */
+    overflow-x: auto;   /* Adjust horizontal overflow as needed */
+    scrollbar-width: auto; /* For Firefox */
+}
+
+/* For Chrome, Edge, Safari */
+.scrollbar-always-visible::-webkit-scrollbar {
+    width: 12px; /* Adjust scrollbar width */
+}
+
+/* This keeps the scrollbar track always visible */
+.scrollbar-always-visible::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Customize track background */
+}
+
+/* Customize the scrollbar thumb */
+.scrollbar-always-visible::-webkit-scrollbar-thumb {
+    background: #888; /* Customize scrollbar thumb color */
+}
+
+.scrollbar-always-visible::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Change thumb color on hover */
+}

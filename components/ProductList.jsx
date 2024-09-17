@@ -35,7 +35,7 @@ const softwaresLista = softwLista.map(softw => {
 
           {quantity !== 0 && (
             <p>
-              <span className={` absolute top-full left-full -translate-x-[calc(100%)] -translate-y-[calc(100%+1rem)] text-center py-1 px-3 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.3)] rounded-l-lg`}>
+              <span className={` absolute top-full left-full -translate-x-[calc(100%-1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 pl-3 pr-6 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.3)] rounded-l-lg`}>
                 {quantity}
               </span>
             </p>)}
@@ -49,7 +49,7 @@ const softwaresLista = softwLista.map(softw => {
         
           {subsQuantity !== 0 && (
             <p>
-              <span className={` absolute top-full left-full -translate-x-[calc(100%)] -translate-y-[calc(100%+1rem)] text-center py-1 px-3 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.3)] rounded-l-lg `}>
+              <span className={` absolute top-full left-full -translate-x-[calc(100%-1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 pl-3 pr-6 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.3)] rounded-l-lg `}>
                 {subsQuantity}
               </span>
             </p>)}

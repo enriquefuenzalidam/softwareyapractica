@@ -28,7 +28,7 @@ const CategoriaProductos = ({ categoryId }) => {
             <li data-aos-once="true" data-aos='fade' className={`relative flex flex-col p-4 rounded-l-lg rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgb(217,239,252,0.5)] to-[rgb(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)]`} key={softw.id}>
 
               <h3 className={` text-black text-opacity-80 text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}>
-                <Link className={` no-underline  text-[#555] hover:text-black transition-all ease-in-out duration-300 `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
+                <Link className={` no-underline  text-[#777] hover:text-[#261b5b] transition-all ease-in-out duration-300 `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
               <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight mt-4  `}>Categoría{softw.softCategs.length > 1 && `s`}:</h4>
               <p className={` grow text-md md:text-lg lg:text-xl font-Oswald text-black text-opacity-80 `} >
                 {softw.softCategs.map((categId, index) => {
@@ -46,7 +46,7 @@ const CategoriaProductos = ({ categoryId }) => {
 
                   {quantity !== 0 && (
                     <p>
-                      <span className={` absolute top-full left-full -translate-x-[calc(100%)] -translate-y-[calc(100%+1rem)] text-center py-1 px-3 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.3)] rounded-l-lg `}>
+                      <span className={` absolute top-full left-full -translate-x-[calc(100%-1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 pl-3 pr-6 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.2)] rounded-l-lg `}>
                         {quantity}
                       </span>
                     </p>
@@ -61,7 +61,7 @@ const CategoriaProductos = ({ categoryId }) => {
                                 
                   {subsQuantity !== 0 && (
                     <p>
-                      <span className={` absolute top-full left-full -translate-x-[calc(100%)] -translate-y-[calc(100%+1rem)] text-center py-1 px-3 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.3)] rounded-l-lg `}>
+                      <span className={` absolute top-full left-full -translate-x-[calc(100%-1rem)] -translate-y-[calc(100%+1rem)] text-center py-1 pl-3 pr-6 inline-block font-bold text-lg md:text-xl overflow-hidden bg-[#faae3b] bg-opacity-70 shadow-inner shadow-[rgba(0,0,0,0.2)] rounded-l-lg `}>
                         {subsQuantity}
                       </span>
                     </p>)}
