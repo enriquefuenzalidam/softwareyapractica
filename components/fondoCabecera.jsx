@@ -26,7 +26,7 @@ const FondoCabecera = ({ portada }) => {
             </div>
             
             <div className={`  absolute top-full left-0 w-full h-16 -translate-y-16 bg-gradient-to-t from-[rgba(0,0,0,0.6)] to-transparent `} />
-            <div className={`  absolute top-0 left-0 w-full h-full bg-cabeceraVideoFondo `} />
+            <div className={`  absolute top-0 left-0 w-full h-full bg-cabeceraVideoFondo opacity-95 `} />
             <div className={`  absolute top-full left-0 w-full h-3 -translate-y-3 bg-gradient-to-t from-[rgba(0,0,0,0.2)] to-transparent `} />
             
             <div className={` relative mx-auto max-w-6xl flex w-full h-full items-end justify-start `}>
