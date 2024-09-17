@@ -12,7 +12,7 @@ import youtubeIcon from 'public/images/youtube.svg';
 
 const Footer = () => {
   return (
-    <footer className={` relative w-full bg-[#2d2820] text-center`}>
+    <footer className={` relative w-full bg-[#152534] text-center`}>
       <div className={` absolute top-0 left-0 w-full h-full bg-repeat `} style={{ backgroundImage: `url(images/noise.png)` }} />
       <div className={`  absolute top-0 left-0 w-full h-3/4 bg-gradient-to-b from-[rgba(217,239,252,0.3)] to-transparent `} />
       <div className={`  absolute top-0 left-0 w-full h-5    bg-gradient-to-b from-[rgba(0,0,0,0.35)] to-transparent `} />
