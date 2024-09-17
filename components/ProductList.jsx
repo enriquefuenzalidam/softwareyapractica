@@ -18,7 +18,7 @@ const softwaresLista = softwLista.map(softw => {
   const quantity = cartItem ? cartItem.quantity : 0;
   const subsQuantity = cartItem ? cartItem.subscriptionQuantity : 0;
   return (
-    <li data-aos-once="true" data-aos='fade' className={`relative flex flex-col p-4 rounded-l-lg rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgb(217,239,252,0.5)] to-[rgb(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
+    <li data-aos-once="true" data-aos='fade' className={`relative flex flex-col p-4 rounded-l-lg rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgba(217,239,252,0.5)] to-[rgba(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
       <h3 className={` text-black text-opacity-80 text-xl md:text-2xl lg:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline  text-[#555] hover:text-[#261b5b] transition-all ease-in-out duration-300 `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
       <h4 className={` text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight  `}>Categoría{softw.softCategs.length > 1 && `s`}:</h4>
       <p className={` grow text-md md:text-lg lg:text-xl font-Oswald text-[#444] mb-4`} >

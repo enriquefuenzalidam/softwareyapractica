@@ -85,7 +85,7 @@ const ComprasCarro = () => {
           const subsQuantity = cartItem ? cartItem.subscriptionQuantity : 0;
 
           return (
-            <li className={`relative p-4 rounded-l-md rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgb(217,239,252,0.5)] to-[rgb(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)] mb-4 sm:mb-5 md:mb-6 lg:mb-7 `} key={item.id}>
+            <li className={`relative p-4 rounded-l-md rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgba(217,239,252,0.5)] to-[rgba(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)] mb-4 sm:mb-5 md:mb-6 lg:mb-7 `} key={item.id}>
               <div className={` w-full `}>
                 <h3 className={` text-black text-opacity-80 grow text-xl md:text-2xl lg:text-3xl font-Oswald font-normal `}>
                   <Link className={` no-underline hover:underline `} href={`/software?productId=${item.id}`}>{item.softNombr}</Link>
