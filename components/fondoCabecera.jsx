@@ -29,10 +29,10 @@ const FondoCabecera = ({ portada }) => {
             <div className={` relative mx-auto max-w-6xl flex w-full h-full items-end justify-start `}>
                 <h2 className={`  mx-8 -translate-y-[0.31rem] sm:-translate-y-[0.31rem] md:-translate-y-[0.39rem] lg:-translate-y-[0.47rem] font-LexendDeca text-opacity-100 text-left w-full text-4xl sm:text-5xl md:text-6xl lg:text-7xl `} style={{ textShadow: `0 0 0.3rem rgba(0,0,0,0.5), 0 0 0.6rem rgba(0,0,0,0.2), 0 0 1.5rem rgba(0,0,0,0.7)` }}>
                     {portada ?
-                    <><span className={`  font-thin text-[#D4D4E1]`} data-aos-once="true" data-aos='fade' >so</span><span className={`  font-extralight text-[#C4CDD6] `} data-aos-once="true" data-aos='fade' >ft</span><span className={`  font-light text-[#C2CCE3] `} data-aos-once="true" data-aos='fade' >wa</span><span className={`  font-semibold text-[#BBC4D3] `} data-aos-once="true" data-aos='fade' >re</span><span className={`  font-extrabold  text-[#B7BFC6] `} data-aos-once="true" data-aos='fade' >ya</span></>
+                    <><span className={`  font-thin text-[#FCF5E9]`} data-aos-once="true" data-aos='fade' >so</span><span className={`  font-extralight text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >ft</span><span className={`  font-light text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >wa</span><span className={`  font-semibold text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >re</span><span className={`  font-extrabold  text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >ya</span></>
                     :
                     <Link href={HOME_URL} className={` no-underline `}>
-                        <span className={`  font-thin text-[#D4D4E1]`} data-aos-once="true" data-aos='fade' >so</span><span className={`  font-extralight text-[#C4CDD6] `} data-aos-once="true" data-aos='fade' >ft</span><span className={`  font-light text-[#C2CCE3] `} data-aos-once="true" data-aos='fade' >wa</span><span className={`  font-semibold text-[#BBC4D3] `} data-aos-once="true" data-aos='fade' >re</span><span className={`  font-extrabold  text-[#B7BFC6] `} data-aos-once="true" data-aos='fade'  >ya</span>
+                        <span className={`  font-thin text-[#FCF5E9]`} data-aos-once="true" data-aos='fade' >so</span><span className={`  font-extralight text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >ft</span><span className={`  font-light text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >wa</span><span className={`  font-semibold text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >re</span><span className={`  font-extrabold  text-[#FCF5E9] `} data-aos-once="true" data-aos='fade' >ya</span>
                     </Link>
                     }
                 </h2>
@@ -41,4 +41,5 @@ const FondoCabecera = ({ portada }) => {
     );
 };
 
+// <span className={`  font-thin text-[#D4D4E1]`} data-aos-once="true" data-aos='fade' >so</span><span className={`  font-extralight text-[#C4CDD6] `} data-aos-once="true" data-aos='fade' >ft</span><span className={`  font-light text-[#C2CCE3] `} data-aos-once="true" data-aos='fade' >wa</span><span className={`  font-semibold text-[#BBC4D3] `} data-aos-once="true" data-aos='fade' >re</span><span className={`  font-extrabold  text-[#B7BFC6] `} data-aos-once="true" data-aos='fade' >ya</span>
 export default FondoCabecera;
