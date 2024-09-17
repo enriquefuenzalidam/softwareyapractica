@@ -23,7 +23,7 @@ const SoftwareCategory = () => {
   }
 
   return (
-    <div className={`relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-gradient-to-b from-[rgba(255,255,255,0.6)] to-transparent`}>
+    <div className={`relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-gradient-to-b from-[rgba(255,255,255,0.6)] to-transparent border-t-4 border-solid border-white`}>
       <h2 className={`mx-auto mb-8 max-w-7xl text-left text-xl sm:text-2xl md:text-3xl uppercase text-opacity-100 font-Oswald`}>
         <span className={`font-extralight text-[#261b5b]`}>Softwares en categoría</span> <span className={`font-medium text-[#2184b6] `}>{categoryName}</span>
       </h2>
