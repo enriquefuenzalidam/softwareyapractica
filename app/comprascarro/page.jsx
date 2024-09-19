@@ -7,9 +7,9 @@ import ComprasCarro from '/components/comprascarro';
 const SoftwarePage = () => {
   const { isEmpty } = useCartContext();
 
-  return (
+  return (<>
+    <FondoCabecera portada={false} />
     <main className="font-Roboto flex-grow">
-      <FondoCabecera portada={false} />
       <section className={` relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-5 lg:px-6 `}>
           <div className={` relative rounded-sm mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl bg-gradient-to-b from-[rgba(255,255,255,0.6)] to-transparent border-t-4 border-solid border-white `}>
             {isEmpty ? (
@@ -24,7 +24,7 @@ const SoftwarePage = () => {
           </div>
       </section>
     </main>
-  );
+    </>);
 };
 
 export default SoftwarePage;
