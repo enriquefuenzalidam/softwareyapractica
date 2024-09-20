@@ -48,7 +48,7 @@ const PodructoDespliegue = ({ productId }) => {
     <div className={` grid grid-cols-1 md:grid-cols-2 md:gap-4 `}>
 
       <div>
-        <div data-aos-once="true" data-aos='fade' className={` relative min-h-96 overflow-scroll shadow-inner bg-white rounded-l-lg rounded-r-2xl `} style={!softw.softImags ? { backgroundImage: `url(${tempSoftImg.src})`, backgroundRepeat: `no-repeat`, backgroundPosition: `center center`, backgroundSize: `contain` } : undefined} >
+        <div data-aos-once="true" data-aos='fade' className={` relative min-h-96 overflow-scroll shadow-inner bg-white rounded-l-md rounded-r-[2rem] `} style={!softw.softImags ? { backgroundImage: `url(${tempSoftImg.src})`, backgroundRepeat: `no-repeat`, backgroundPosition: `center center`, backgroundSize: `contain` } : undefined} >
 
           {hasImages && (
             <>
@@ -56,7 +56,7 @@ const PodructoDespliegue = ({ productId }) => {
                 src={currentImageUrl.src} alt="" />
             </>
           )}
-          <div className={` absolute inset-0 shadow-inner shadow-[rgba(0,0,0,0.5)] rounded-l-lg rounded-r-2xl `} />
+          <div className={` absolute inset-0 shadow-inner shadow-[rgba(0,0,0,0.5)] rounded-l-md rounded-r-2xl `} />
           {softw.softImags && softw.softImags.length > 1 && (
             <>
               <span className={` transition-all ease-in-out cursor-pointer absolute top-1/2 left-2 hover:left-3 -translate-y-1/2 font-Roboto font-normal text-9xl text-white`}
@@ -68,7 +68,7 @@ const PodructoDespliegue = ({ productId }) => {
 
         </div>
       </div>
-      <div className={` mt-4 md:mt-0 flex flex-col `}>
+      <div className={` mt-4 mb-0 md:my-4 flex flex-col `}>
         <h3 className="text-black text-opacity-80 text-2xl sm:text-4xl font-Oswald font-semibold ">
           {softw.softNombr}
         </h3>

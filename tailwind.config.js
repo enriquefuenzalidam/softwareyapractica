@@ -19,6 +19,14 @@ module.exports = {
                 RobotoCondensed: ['Roboto Condensed', ...defaultTheme.fontFamily.sans],
                 LexendDeca: ['Lexend Deca', ...defaultTheme.fontFamily.sans],
                 Oswald: ['Oswald', ...defaultTheme.fontFamily.sans]
+            },
+            screens: {
+              'sm': '640px',
+              'md': '768px',
+              'lg': '1024px',
+              'ml': '1152px',
+              'xl': '1280px',
+              '2xl': '1536px',
             }
         }
     },

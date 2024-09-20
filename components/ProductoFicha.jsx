@@ -5,11 +5,11 @@ import categNombrs from 'data/categNombrs.json';
 const ProductoFicha = ({ softw = [], quantity, subsQuantity }) => {
 
     return (
-        <li data-aos-once="true" data-aos='fade' className={`relative flex flex-col p-4 rounded-l-lg rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgba(217,239,252,0.5)] to-[rgba(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
+        <li data-aos-once="true" data-aos='fade' className={`relative flex flex-col p-4 rounded-l-md rounded-r-3xl border-t-2 border-black border-opacity-5 bg-gradient-to-b from-[rgba(217,239,252,0.5)] to-[rgba(217,239,252,0.2)] shadow-md shadow-[rgba(0,0,0,0.5)] `} key={softw.id}>
 
             <h3 className={` text-black text-opacity-80 text-2xl md:text-3xl font-Oswald font-normal mb-4 `}><Link className={` no-underline  text-[#777] hover:text-[#261b5b] transition-all ease-in-out duration-300 `} href={`/software?productId=${softw.id}`} >{softw.softNombr}</Link></h3>
-            <h4 className={` text-black text-opacity-80 text-lg md:text-xl lg:text-2xl font-Oswald font-extralight mt-4 `}>Categoría{softw.softCategs.length > 1 && `s`}:</h4>
-            <p className={` grow text-md md:text-lg lg:text-xl font-Oswald text-[#444] mb-4`} >
+            <h4 className={` text-black text-opacity-80 text-md md:text-lg lg:text-xl font-Oswald font-extralight mt-4 `}>Categoría{softw.softCategs.length > 1 && `s`}:</h4>
+            <p className={` grow text-lg md:text-xl lg:text-2xl font-Oswald text-[#444] mb-4`} >
                 {softw.softCategs.map((categId, index) => {
                     const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
                     const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
