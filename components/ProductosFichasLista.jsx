@@ -1,7 +1,7 @@
 
 import { useCartContext } from '../app/context/CartContext';
 import softwLista from 'data/softwLista.json';
-import ProductoFicha from './productoFicha';
+import ProductoFicha from './ProductoFicha';
 
 const ProductosFichasLista = ({ categoryIds = [] }) => {
 
