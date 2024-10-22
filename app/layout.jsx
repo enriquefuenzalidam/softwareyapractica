@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
 
         <meta name="description" content="Venta y suscripción de software. E-commerce." />
         <meta name="keywords" content="software, e-commerce, suscripción" />
-        <meta charSet="UTF-8" />
+        <link rel="favicon" type="image/x-icon" href="favicon.ico" />
 
         <meta property="og:title" content="Softwareya" />
         <meta property="og:description" content="Venta y suscripción de software. E-commerce." />
