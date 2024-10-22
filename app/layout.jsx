@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <head>
 
         <meta name="description" content="Venta y suscripción de software. E-commerce." />
-        <meta name="keywords" content="software, e-commerce" />
+        <meta name="keywords" content="software, e-commerce, suscripción" />
         <meta charSet="UTF-8" />
 
         <meta property="og:title" content="Softwareya" />
@@ -33,11 +33,11 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content="Venta y suscripción de software. E-commerce." />
         <meta name="twitter:image" content="/images/softwareya-logo-card.png" />
 
-                <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png" />
-                <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512x512.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512x512.png" />
 
       </head>
       <body className={` relative bg-[#FCF5E9] min-w-full min-h-screen flex flex-col `}>
