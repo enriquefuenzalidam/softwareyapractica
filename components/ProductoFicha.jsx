@@ -13,11 +13,13 @@ const ProductoFicha = ({ softw = [], quantity, subsQuantity }) => {
                 {softw.softCategs.map((categId, index) => {
                     const categoryName = categNombrs.find(categ => categ.id === categId)?.catgNombr;
                     const categoryId = categNombrs.find(categ => categ.id === categId)?.id;
-                    return (<>
-                        <Link className={` no-underline hover:underline hover:text-[#111] `} href={`/softwarecatgoria?catgoriaId=${categoryId}`} key={index}>
-                            {categoryName}
-                        </Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}
-                    </>);
+                    return (
+                        <span key={categoryId || index}>
+                            <Link className={` no-underline hover:underline hover:text-[#111] `} href={`/softwarecatgoria?catgoriaId=${categoryId}`}>
+                                {categoryName}
+                            </Link>{softw.softCategs.length !== 1 && (index < softw.softCategs.length - 1 && (index < softw.softCategs.length - 2 ? `, ` : ` y `))}
+                        </span>
+                    );
                 })}.
             </p>
 
